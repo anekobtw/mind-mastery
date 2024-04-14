@@ -1,3 +1,1 @@
-from database.notes_db import NotesManager
-from database.reminder_db import ReminderManager
-from database.settings_db import SettingsManager
+from database.bases import NotesManager, ReminderManager, SettingsManager
