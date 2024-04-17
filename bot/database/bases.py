@@ -48,20 +48,23 @@ class ReminderManager(DBManager):
     def __init__(self) -> None:
         table_schema = """CREATE TABLE IF NOT EXISTS reminder (
             reminder_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            user_id INT,
+            user_id INTEGER,
             purpose TEXT,
-            timestamp INTEGER,
-            frequency TEXT
+            timestamp INTEGER
         )"""
         super().__init__("databases/reminder.db", table_schema)
 
-    def create_reminder(self, user_id: int, purpose: str, timestamp: int, frequency: str) -> None:
-        self.execute_query(
-            "INSERT INTO reminder(user_id, purpose, timestamp, frequency) VALUES (?, ?, ?, ?)", (user_id, purpose, timestamp, frequency)
-        )
+    def create_reminder(self, user_id: int, purpose: str, timestamp: int) -> None:
+        self.execute_query("INSERT INTO reminder(user_id, purpose, timestamp) VALUES (?, ?, ?)", (user_id, purpose, timestamp))
+
+    def delete_reminder(self, reminder_id: int) -> None:
+        self.execute_query("DELETE FROM reminder WHERE reminder_id = ?", (reminder_id,))
 
     def get_user_reminders(self, user_id: int) -> list:
         return self.fetch_all("SELECT * FROM reminder WHERE user_id = ?", (user_id,))
+
+    def get_reminder_info(self, reminder_id: int):
+        return self.fetch_one("SELECT * FROM reminder WHERE reminder_id = ?", (reminder_id,))
 
 
 class SettingsManager(DBManager):

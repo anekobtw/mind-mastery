@@ -22,10 +22,10 @@ def get_nums_kb(notes_list: list[str], what: str) -> types.InlineKeyboardMarkup:
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
-def get_delete_keyboard(note: list) -> types.InlineKeyboardMarkup:
+def get_delete_keyboard(what1: list, what2: str) -> types.InlineKeyboardMarkup:
     buttons = [
-        [types.InlineKeyboardButton(text="❌ Delete", callback_data=f"delete_note_{note[0]}")],
-        [types.InlineKeyboardButton(text="🔙 Go back", callback_data="delete_note_cancel")],
+        [types.InlineKeyboardButton(text="❌ Delete", callback_data=f"delete_{what2}_{what1[0]}")],
+        [types.InlineKeyboardButton(text="🔙 Go back", callback_data=f"delete_{what2}_cancel")],
     ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 

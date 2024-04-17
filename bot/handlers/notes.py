@@ -49,7 +49,7 @@ async def note_info(callback: types.CallbackQuery):
         f"<b>Text:</b> {note[2]}\n",
     )
 
-    await callback.message.edit_text("".join(text), reply_markup=get_delete_keyboard(note))
+    await callback.message.edit_text("".join(text), reply_markup=get_delete_keyboard(note, "note"))
 
 
 @router.callback_query(F.data.startswith("delete_note_"))

@@ -5,7 +5,6 @@ import os
 from aiogram import Bot, Dispatcher
 from aiogram.client.bot import DefaultBotProperties
 from aiogram.fsm.storage.memory import MemoryStorage
-from aiogram_dialog import setup_dialogs
 from dotenv import load_dotenv
 
 from handlers import common
@@ -25,7 +24,6 @@ async def run_bot():
     storage = MemoryStorage()
     dp = Dispatcher(storage=storage)
     dp.include_router(common.router)
-    setup_dialogs(dp)
 
     await dp.start_polling(bot)
 
