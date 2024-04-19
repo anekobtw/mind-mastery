@@ -5,6 +5,7 @@ shutil.rmtree("database/__pycache__")
 shutil.rmtree("handlers/__pycache__")
 shutil.rmtree("keyboards/__pycache__")
 shutil.rmtree("misc/__pycache__")
+shutil.rmtree("__pycache__")
 
 # for database in os.listdir("databases"):
 # os.remove(f"databases/{database}")

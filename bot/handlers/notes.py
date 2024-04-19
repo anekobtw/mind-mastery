@@ -6,8 +6,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
 from database import NotesManager
-from handlers.common import router
 from keyboards import get_delete_keyboard, get_nums_kb
+from main import router
 
 nm = NotesManager()
 

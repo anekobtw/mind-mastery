@@ -17,7 +17,7 @@ class DBManager:
         self.cursor.execute(query, params)
         return self.cursor.fetchall()
 
-    def fetch_one(self, query: str, params: tuple = ()):
+    def fetch_one(self, query: str, params: tuple = ()) -> list:
         self.cursor.execute(query, params)
         return self.cursor.fetchone()
 
@@ -63,8 +63,11 @@ class ReminderManager(DBManager):
     def get_user_reminders(self, user_id: int) -> list:
         return self.fetch_all("SELECT * FROM reminder WHERE user_id = ?", (user_id,))
 
-    def get_reminder_info(self, reminder_id: int):
+    def get_reminder_info(self, reminder_id: int) -> list:
         return self.fetch_one("SELECT * FROM reminder WHERE reminder_id = ?", (reminder_id,))
+
+    def get_all_reminders(self) -> list:
+        return self.fetch_all("SELECT * FROM reminder")
 
 
 class SettingsManager(DBManager):

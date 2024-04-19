@@ -7,8 +7,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
 from database import ReminderManager, SettingsManager
-from handlers.common import router
 from keyboards import confirm_keyboard, get_delete_keyboard, get_nums_kb
+from main import router
 from misc import datetime_to_utc_timestamp, parse_datetime
 
 rm = ReminderManager()
@@ -89,11 +89,11 @@ async def refuted(callback: types.CallbackQuery, state: FSMContext):
 async def reminders(message: types.Message) -> None:
     reminders_list = rm.get_user_reminders(message.from_user.id)
 
-    if reminders_list is None:
-        await message.answer("You don't have any reminders yet.")
-    else:
+    if reminders_list:
         reminders = "\n".join([f"<b>{ind+1}.</b> {note[2]}\n" for ind, note in enumerate(reminders_list)])
         await message.answer(text=reminders, reply_markup=get_nums_kb(reminders_list, "reminder"))
+    else:
+        await message.answer("You don't have any reminders yet.\nType /create_reminder to create one.")
 
 
 @router.callback_query(F.data.startswith("reminder_info_"))

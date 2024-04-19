@@ -1,13 +1,13 @@
-from aiogram import F, Router, types
+from aiogram import F, types
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
 from database import SettingsManager
 from keyboards import confirm_keyboard
+from main import router
 from misc import get_tz_text, start_text
 
-router = Router()
 sm = SettingsManager()
 
 

@@ -1,5 +1,5 @@
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timezone
 
 import pytz
 from dateutil import parser, tz
@@ -58,3 +58,9 @@ def parse_datetime(input_str: str) -> datetime:
 
 def datetime_to_utc_timestamp(datetime_obj: str) -> int:
     return datetime_obj.astimezone(tz.tzutc()).timestamp()
+
+
+def get_utc_timestamp() -> int:
+    dt = datetime.now(timezone.utc)
+    utc_time = dt.replace(tzinfo=timezone.utc)
+    return int(utc_time.timestamp())
