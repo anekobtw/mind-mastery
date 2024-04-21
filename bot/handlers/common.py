@@ -44,8 +44,10 @@ async def start_command_handler(message: types.Message, state: FSMContext) -> No
 async def process_location(message: types.Message, state: FSMContext) -> None:
     await state.clear()
     try:
-        text, offset = get_tz_text(location=message.text)
-        sm.create_settings(message.from_user.id, offset)
+        text, offset_secs = get_tz_text(location=message.text)
+        if sm.get_user_settings(message.from_user.id) is not None:
+            sm.delete_settings(message.from_user.id)
+        sm.create_settings(message.from_user.id, offset_secs)
         await message.answer(text="".join(text), reply_markup=confirm_keyboard("start"))
     except Exception:
         await message.answer("Something went wrong, please try again.")
@@ -60,16 +62,16 @@ async def confirmed(callback: types.CallbackQuery):
 @router.callback_query(F.data == "refute_start")
 async def refuted(callback: types.CallbackQuery, state: FSMContext) -> None:
     await state.set_state(SettingsForm.time)
-    await callback.message.edit_text("Please send me your time in the following format: XX:XX.\n Type /cancel if you changed your mind.")
+    await callback.message.edit_text("Please send me your time in the following format: XX:XX.\nType /cancel if you changed your mind.")
 
 
 @router.message(SettingsForm.time)
 async def process_time(message: types.Message, state: FSMContext) -> None:
     await state.clear()
     try:
-        text, offset = get_tz_text(approximate_time=message.text)
+        text, offset_secs = get_tz_text(approximate_time=message.text)
         sm.delete_settings(message.from_user.id)
-        sm.create_settings(message.from_user.id, offset)
+        sm.create_settings(message.from_user.id, offset_secs)
         await message.answer(text="".join(text), reply_markup=confirm_keyboard("start"))
     except Exception:
         await message.answer(f"Something went wrong. Please try again.")

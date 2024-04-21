@@ -74,12 +74,12 @@ class SettingsManager(DBManager):
     def __init__(self) -> None:
         table_schema = """CREATE TABLE IF NOT EXISTS settings (
             user_id INTEGER,
-            tz_offset INTEGER
+            tz_offset_secs INTEGER
         )"""
         super().__init__("databases/settings.db", table_schema)
 
-    def create_settings(self, user_id: int, tz_offset: int) -> None:
-        self.execute_query("INSERT INTO settings(user_id, tz_offset) VALUES (?, ?)", (user_id, tz_offset))
+    def create_settings(self, user_id: int, tz_offset_secs: int) -> None:
+        self.execute_query("INSERT INTO settings(user_id, tz_offset_secs) VALUES (?, ?)", (user_id, tz_offset_secs))
 
     def delete_settings(self, user_id: int) -> None:
         self.execute_query("DELETE FROM settings WHERE user_id = ?", (user_id,))

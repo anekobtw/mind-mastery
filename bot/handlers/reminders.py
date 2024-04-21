@@ -9,7 +9,7 @@ from aiogram.fsm.state import State, StatesGroup
 from database import ReminderManager, SettingsManager
 from keyboards import confirm_keyboard, get_delete_keyboard, get_nums_kb
 from main import router
-from misc import datetime_to_utc_timestamp, parse_datetime
+from misc import parse_datetime
 
 rm = ReminderManager()
 sm = SettingsManager()
@@ -26,12 +26,7 @@ async def update_message(ftext: str, state: FSMContext, reply_markup: types.Inli
     time = user_data.get("time", "")
     message = user_data.get("message", types.Message)
 
-    text = (
-        f"{ftext}\n\n",
-        f"<b>Purpose:</b> {purpose}\n",
-        f"<b>Time:</b> {time}\n\n",
-        "Type /cancel if you changed your mind.\n",
-    )
+    text = (f"{ftext}\n\n", f"<b>Purpose:</b> {purpose}\n", f"<b>Time:</b> {time}\n\n", "Type /cancel if you changed your mind.")
     await message.edit_text(text="".join(text), reply_markup=reply_markup)
 
 
@@ -39,9 +34,8 @@ async def update_message(ftext: str, state: FSMContext, reply_markup: types.Inli
 @router.message(F.text, Command("create_reminder"))
 async def create_reminder(message: types.Message, state: FSMContext) -> None:
     await state.set_state(ReminderForm.purpose)
-    await state.update_data(user_id=message.from_user.id)
-    message = await message.answer("What do you want me to remind you of?")
-    await state.update_data(message=message)
+    msg = await message.answer("What do you want me to remind you of?\n<b>Purpose:</b>\n<b>Time:</b>\n\nType /cancel if you changed your mind.")
+    await state.update_data(message=msg)
 
 
 @router.message(ReminderForm.purpose)
@@ -54,9 +48,9 @@ async def process_purpose(message: types.Message, state: FSMContext) -> None:
 @router.message(ReminderForm.time)
 async def process_time(message: types.Message, state: FSMContext) -> None:
     try:
-        datetime = parse_datetime(message.text)
-        await state.update_data(time=datetime.strftime("%d %b %Y %H:%M:%S"))
-        await state.update_data(timestamp=datetime_to_utc_timestamp(datetime))
+        local_datetime = parse_datetime(message.text)
+        await state.update_data(time=local_datetime.strftime("%d %b %Y %H:%M:%S"))
+        await state.update_data(timestamp=int(local_datetime.timestamp()))
         await update_message("If everything is correct, press ✅ to create the reminder.", state, confirm_keyboard("reminder"))
         await state.set_state(None)
     except:
@@ -70,7 +64,7 @@ async def process_time(message: types.Message, state: FSMContext) -> None:
 async def confirmed(callback: types.CallbackQuery, state: FSMContext):
     user_data = await state.get_data()
     rm.create_reminder(
-        user_id=user_data["user_id"],
+        user_id=callback.from_user.id,
         purpose=user_data["purpose"],
         timestamp=user_data["timestamp"],
     )
