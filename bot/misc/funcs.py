@@ -5,6 +5,7 @@ import pytz
 from dateutil import parser, tz
 from geopy.geocoders import Nominatim
 from timezonefinder import TimezoneFinder
+from main import MY_TIMEZONE_AHEAD_SECONDS
 
 geolocator = Nominatim(user_agent="anekobtw")
 tzfinder = TimezoneFinder()
@@ -50,8 +51,8 @@ def get_utcoffset_from_time(approximate_time: str):
     return pytz.timezone(result[0]), int(pytz.timezone(result[0]).utcoffset(datetime.now()).total_seconds())
 
 
-def parse_datetime(input_str: str) -> datetime:
-    return parser.parse(input_str, fuzzy=True, tzinfos=[timezone.utc])
+def parse_datetime(input_str: str, offset_int: int) -> datetime:
+    return parser.parse(input_str, fuzzy=True) - timedelta(seconds=int(MY_TIMEZONE_AHEAD_SECONDS)) + timedelta(seconds=offset_int)
 
 
 def get_utc_timestamp() -> int:

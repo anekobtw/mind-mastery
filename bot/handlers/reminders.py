@@ -34,7 +34,7 @@ async def update_message(ftext: str, state: FSMContext, reply_markup: types.Inli
 @router.message(F.text, Command("create_reminder"))
 async def create_reminder(message: types.Message, state: FSMContext) -> None:
     await state.set_state(ReminderForm.purpose)
-    msg = await message.answer("What do you want me to remind you of?\n<b>Purpose:</b>\n<b>Time:</b>\n\nType /cancel if you changed your mind.")
+    msg = await message.answer("What do you want me to remind you of?\n\n<b>Purpose:</b>\n<b>Time:</b>\n\nType /cancel if you changed your mind.")
     await state.update_data(message=msg)
 
 

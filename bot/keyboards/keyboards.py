@@ -28,3 +28,8 @@ def confirm_keyboard(suffix: str) -> types.InlineKeyboardMarkup:
         ]
     ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
+
+
+def website_button(web_app_info: types.WebAppInfo) -> types.InlineKeyboardMarkup:
+    buttons = [[types.InlineKeyboardButton(text="Open the website", web_app=web_app_info)]]
+    return types.InlineKeyboardMarkup(inline_keyboard=buttons)

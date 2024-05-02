@@ -25,6 +25,7 @@ async def remind(bot: Bot):
 async def run_bot():
     load_dotenv()
     TOKEN = os.getenv("TOKEN")
+    MY_TIMEZONE_AHEAD_SECONDS = os.getenv("MY_TIMEZONE_AHEAD_SECONDS")  # used in misc/funcs
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 
     scheduler = AsyncIOScheduler()
