@@ -50,12 +50,16 @@ class ReminderManager(DBManager):
             reminder_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
             user_id INTEGER,
             purpose TEXT,
-            timestamp INTEGER
+            utc_timestamp INTEGER,
+            local_timestamp INTEGER
         )"""
         super().__init__("databases/reminder.db", table_schema)
 
-    def create_reminder(self, user_id: int, purpose: str, timestamp: int) -> None:
-        self.execute_query("INSERT INTO reminder(user_id, purpose, timestamp) VALUES (?, ?, ?)", (user_id, purpose, timestamp))
+    def create_reminder(self, user_id: int, purpose: str, utc_timestamp: int, local_timestamp: int) -> None:
+        self.execute_query(
+            "INSERT INTO reminder(user_id, purpose, utc_timestamp, local_timestamp) VALUES (?, ?, ?, ?)",
+            (user_id, purpose, utc_timestamp, local_timestamp),
+        )
 
     def delete_reminder(self, reminder_id: int) -> None:
         self.execute_query("DELETE FROM reminder WHERE reminder_id = ?", (reminder_id,))

@@ -1,21 +1,21 @@
 from aiogram import types
 
 
-def get_nums_kb(some_list: list[str], what: str) -> types.InlineKeyboardMarkup:
+def list_to_kb(ListToBeIterated: list[str], prefix: str) -> types.InlineKeyboardMarkup:
     buttons = []
-    for i in range(0, len(some_list), 8):
+    for i in range(0, len(ListToBeIterated), 8):
         row_buttons = [
-            types.InlineKeyboardButton(text=str(ind + 1 + i), callback_data=f"{what}_info_{str(val[0])}")
-            for ind, val in enumerate(some_list[i : i + 8])
+            types.InlineKeyboardButton(text=str(ind + 1 + i), callback_data=f"{prefix}_info_{str(val[0])}")
+            for ind, val in enumerate(ListToBeIterated[i : i + 8])
         ]
         buttons.append(row_buttons)
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
-def get_delete_keyboard(what1: list, what2: str) -> types.InlineKeyboardMarkup:
+def get_delete_keyboard(id: int, prefix: str) -> types.InlineKeyboardMarkup:
     buttons = [
-        [types.InlineKeyboardButton(text="❌ Delete", callback_data=f"delete_{what2}_{what1[0]}")],
-        [types.InlineKeyboardButton(text="🔙 Go back", callback_data=f"delete_{what2}_cancel")],
+        [types.InlineKeyboardButton(text="❌ Delete", callback_data=f"delete_{prefix}_{id}")],
+        [types.InlineKeyboardButton(text="🔙 Go back", callback_data=f"delete_{prefix}_cancel")],
     ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 

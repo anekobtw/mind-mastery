@@ -1,10 +1,8 @@
-import os
 import time
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 import pytz
-from dateutil import parser, tz
-from dotenv import load_dotenv
+from dateutil import tz
 from geopy.geocoders import Nominatim
 from timezonefinder import TimezoneFinder
 
@@ -50,13 +48,6 @@ def get_utcoffset_from_time(approximate_time: str):
             result[1] = abs(local_time_seconds - timezone_time_seconds)
 
     return pytz.timezone(result[0]), int(pytz.timezone(result[0]).utcoffset(datetime.now()).total_seconds())
-
-
-def parse_datetime(input_str: str, offset_int: int) -> tuple[datetime, datetime]:
-    load_dotenv()
-    local_datetime = parser.parse(input_str, fuzzy=True)
-    adjusted_datetime = local_datetime + timedelta(seconds=int(os.getenv("MY_TIMEZONE_AHEAD_SECONDS"))) - timedelta(seconds=offset_int)
-    return local_datetime, adjusted_datetime
 
 
 def get_utc_timestamp() -> int:

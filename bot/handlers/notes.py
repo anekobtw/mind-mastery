@@ -6,7 +6,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
 from database import NotesManager
-from keyboards import get_delete_keyboard, get_nums_kb
+from keyboards import get_delete_keyboard, list_to_kb
 from main import router
 
 nm = NotesManager()
@@ -35,7 +35,7 @@ async def notes(message: types.Message) -> None:
     notes_list = nm.find_user_notes(message.from_user.id)
     if notes_list:
         notes = "\n".join([f"<b>{ind+1}.</b> {note[2]}\n" for ind, note in enumerate(notes_list)])
-        await message.answer(text=notes, reply_markup=get_nums_kb(notes_list, "note"))
+        await message.answer(text=notes, reply_markup=list_to_kb(notes_list, "note"))
     else:
         await message.answer("You don't have any notes yet.\nType /take_note to create one.")
 
@@ -45,11 +45,11 @@ async def note_info(callback: types.CallbackQuery):
     note = nm.get_note_info(note_id=callback.data.split("_")[2])
 
     text = (
-        f"<b>Author Telegram ID:</b> {note[1]}\n",
+        f"<b>Author's Telegram ID:</b> {note[1]}\n",
         f"<b>Text:</b> {note[2]}\n",
     )
 
-    await callback.message.edit_text("".join(text), reply_markup=get_delete_keyboard(note, "note"))
+    await callback.message.edit_text("".join(text), reply_markup=get_delete_keyboard(note[0], "note"))
 
 
 @router.callback_query(F.data.startswith("delete_note_"))
@@ -59,10 +59,11 @@ async def delete_note(callback: types.CallbackQuery):
     if action != "cancel":
         nm.delete_note(int(action))
         await callback.message.edit_text(text="Deleted successfully! ✅")
-        time.sleep(1)
+        time.sleep(0.5)
+
     notes_list = nm.find_user_notes(callback.from_user.id)
     notes = "\n".join([f"<b>{ind+1}.</b> {note[2]}\n" for ind, note in enumerate(notes_list)])
     if notes:
-        await callback.message.edit_text(text=notes, reply_markup=get_nums_kb(notes_list, "note"))
+        await callback.message.edit_text(text=notes, reply_markup=list_to_kb(notes_list, "note"))
     else:
         await callback.message.edit_text(text="You don't have any notes yet.\nType /take_note to create one.")
