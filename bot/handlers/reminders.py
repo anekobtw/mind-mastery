@@ -26,8 +26,8 @@ async def update_message(ftext: str, state: FSMContext, reply_markup: types.Inli
     time = user_data.get("time", "")
     message = user_data.get("message", types.Message)
 
-    text = (f"{ftext}\n\n", f"<b>Purpose:</b> {purpose}\n", f"<b>Time:</b> {time}\n\n", "Type /cancel if you changed your mind.")
-    await message.edit_text(text="".join(text), reply_markup=reply_markup)
+    text = f"{ftext}\n\n<b>Purpose:</b> {purpose}\n<b>Time:</b> {time}\n\nType /cancel if you changed your mind."
+    await message.edit_text(text=text, reply_markup=reply_markup)
 
 
 # Creaing one...
@@ -48,9 +48,9 @@ async def process_purpose(message: types.Message, state: FSMContext) -> None:
 @router.message(ReminderForm.time)
 async def process_time(message: types.Message, state: FSMContext) -> None:
     try:
-        local_datetime = parse_datetime(message.text)
+        local_datetime, my_datetime = parse_datetime(message.text, sm.get_user_settings(message.from_user.id)[1])
         await state.update_data(time=local_datetime.strftime("%d %b %Y %H:%M:%S"))
-        await state.update_data(timestamp=int(local_datetime.timestamp()))
+        await state.update_data(timestamp=int(my_datetime.timestamp()))
         await update_message("If everything is correct, press ✅ to create the reminder.", state, confirm_keyboard("reminder"))
         await state.set_state(None)
     except:
