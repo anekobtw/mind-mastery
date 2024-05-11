@@ -32,10 +32,10 @@ First, you need to download Python on your local machine
    pip install -r requirements.txt
    ```
 3. Create an .env file in `/bot` folder and then insert it there (and insert your data)
-```
-TOKEN = 
-MY_TIMEZONE_AHEAD_SECONDS = 
-```
+  ```
+  TOKEN = 
+  MY_TIMEZONE_AHEAD_SECONDS = 
+  ```
 4. Run `main.py` file
 
  ### Built With
