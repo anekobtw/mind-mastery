@@ -18,14 +18,13 @@ router = Router()
 async def remind(bot: Bot):
     for data in ReminderManager().get_all_reminders():
         if data[3] == get_utc_timestamp():
-            await bot.send_message(data[1], text=f"{data[2]} reminder.")
+            await bot.send_message(data[1], text=f"❗ Hey, just reminding you about <b>{data[2]}</b>.", disable_notification=False)
             ReminderManager().delete_reminder(data[0])
 
 
 async def run_bot():
     load_dotenv()
     TOKEN = os.getenv("TOKEN")
-    MY_TIMEZONE_AHEAD_SECONDS = os.getenv("MY_TIMEZONE_AHEAD_SECONDS")  # used in misc/funcs
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 
     scheduler = AsyncIOScheduler()

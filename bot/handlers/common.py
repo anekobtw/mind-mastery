@@ -37,7 +37,7 @@ async def start_command_handler(message: types.Message, state: FSMContext) -> No
         await state.set_state(SettingsForm.location)
         await message.answer(text="Please send me your country or city first so I can identify out your time zone.")
     else:
-        await message.answer("".join(start_text))
+        await message.answer(start_text)
 
 
 @router.message(SettingsForm.location)
