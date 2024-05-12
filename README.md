@@ -2,7 +2,7 @@
 <br/>
 <div align="center">
 
-<h3 align="center">Mind Mastery</h3>
+<h1 align="center">Mind Mastery</h1>
 
  ![version](https://img.shields.io/badge/Project_version-NA-blue)
  ![aiogram](https://img.shields.io/badge/aiogram-3.x-blue)
