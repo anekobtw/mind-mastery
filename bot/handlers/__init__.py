@@ -1,1 +1,1 @@
-from handlers import common, notes, reminders, timer
+from handlers import common, notes, quote, reminders, timer
