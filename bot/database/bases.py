@@ -44,34 +44,58 @@ class NotesManager(DBManager):
         return self.fetch_one("SELECT * FROM notes WHERE note_id = ? LIMIT 1", (note_id,))
 
 
-class ReminderManager(DBManager):
+class RNIManager(DBManager):
     def __init__(self) -> None:
-        table_schema = """CREATE TABLE IF NOT EXISTS reminder (
+        table_schema = """CREATE TABLE IF NOT EXISTS rni (
             reminder_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
             user_id INTEGER,
             purpose TEXT,
-            utc_timestamp INTEGER,
-            local_timestamp INTEGER
+            utc_timestamp INTEGER
         )"""
-        super().__init__("databases/reminder.db", table_schema)
+        super().__init__("databases/reminders.db", table_schema)
 
-    def create_reminder(self, user_id: int, purpose: str, utc_timestamp: int, local_timestamp: int) -> None:
-        self.execute_query(
-            "INSERT INTO reminder(user_id, purpose, utc_timestamp, local_timestamp) VALUES (?, ?, ?, ?)",
-            (user_id, purpose, utc_timestamp, local_timestamp),
-        )
+    def create_reminder(self, user_id: int, purpose: str, utc_timestamp: int) -> None:
+        self.execute_query("INSERT INTO rni(user_id, purpose, utc_timestamp) VALUES (?, ?, ?)", (user_id, purpose, utc_timestamp))
 
     def delete_reminder(self, reminder_id: int) -> None:
-        self.execute_query("DELETE FROM reminder WHERE reminder_id = ?", (reminder_id,))
+        self.execute_query("DELETE FROM rni WHERE reminder_id = ?", (reminder_id,))
 
     def get_user_reminders(self, user_id: int) -> list:
-        return self.fetch_all("SELECT * FROM reminder WHERE user_id = ?", (user_id,))
+        return self.fetch_all("SELECT * FROM rni WHERE user_id = ?", (user_id,))
 
     def get_reminder_info(self, reminder_id: int) -> list:
-        return self.fetch_one("SELECT * FROM reminder WHERE reminder_id = ?", (reminder_id,))
+        return self.fetch_one("SELECT * FROM rni WHERE reminder_id = ?", (reminder_id,))
 
     def get_all_reminders(self) -> list:
-        return self.fetch_all("SELECT * FROM reminder")
+        return self.fetch_all("SELECT * FROM rni")
+
+
+class RWIManager(DBManager):
+    def __init__(self) -> None:
+        table_schema = """CREATE TABLE IF NOT EXISTS rwi (
+            reminder_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            user_id INTEGER,
+            purpose TEXT,
+            hour INTEGER,
+            minute INTEGER,
+            days TEXT
+        )"""
+        super().__init__("databases/reminders.db", table_schema)
+
+    def create_reminder(self, user_id: int, purpose: str, hour: int, minute: int, days: str) -> None:
+        self.execute_query("INSERT INTO rwi(user_id, purpose, hour, minute, days) VALUES (?, ?, ?, ?, ?)", (user_id, purpose, hour, minute, days))
+
+    def delete_reminder(self, reminder_id: int) -> None:
+        self.execute_query("DELETE FROM rwi WHERE reminder_id = ?", (reminder_id,))
+
+    def get_user_reminders(self, user_id: int) -> list:
+        return self.fetch_all("SELECT * FROM rwi WHERE user_id = ?", (user_id,))
+
+    def get_reminder_info(self, reminder_id: int) -> list:
+        return self.fetch_one("SELECT * FROM rwi WHERE reminder_id = ?", (reminder_id,))
+
+    def get_all_reminders(self) -> list:
+        return self.fetch_all("SELECT * FROM rwi")
 
 
 class SettingsManager(DBManager):

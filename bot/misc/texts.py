@@ -3,17 +3,15 @@ Hey! Welcome to your study buddy. Let's maximize your learning experience with s
 
 <b>Notes (can be used as To-Do as well)</b>
 /take_note - Create a new note
-/notes - Return a list of your notes
+/notes - Return a list of your notes 
 
 <b>Reminders</b>
 /create_reminder - Create a new reminder
 /reminders - Return a list of your reminders
 
-<b>Timer</b>
-/timer - Set the studying timer (customizable pomodoro)
-
-<b>Learning Languages</b>
-We're currently making another bot for learning languages..
+<b>Other</b>
+/timer - Set the timer (customizable pomodoro)
+/quote - Feeling bad? Get an inspiring quote
 
 <b>Settings</b>
 /change_timezone - Change the time zone

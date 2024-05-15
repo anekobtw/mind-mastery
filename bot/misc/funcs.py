@@ -1,10 +1,15 @@
+import os
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import pytz
-from dateutil import tz
+from aiogram import types
+from dateutil import parser, tz
+from dotenv import load_dotenv
 from geopy.geocoders import Nominatim
 from timezonefinder import TimezoneFinder
+
+from database import SettingsManager
 
 geolocator = Nominatim(user_agent="anekobtw")
 tzfinder = TimezoneFinder()
@@ -54,3 +59,27 @@ def get_utc_timestamp() -> int:
     dt = datetime.now(timezone.utc)
     utc_time = dt.replace(tzinfo=timezone.utc)
     return int(utc_time.timestamp())
+
+
+def local_to_utc(message: types.Message, with_interval: bool) -> tuple[int, int]:
+    load_dotenv()
+    my_timezone_seconds = int(os.getenv("MY_TIMEZONE_AHEAD_SECONDS"))
+    user_timezone_seconds = SettingsManager().get_user_settings(message.from_user.id)[1]
+    if with_interval:
+        hour, minute = map(int, message.text.split(":"))
+        time = datetime(2000, 1, 1, hour, minute, 0) + timedelta(seconds=my_timezone_seconds) - timedelta(seconds=user_timezone_seconds)
+        return time.hour, time.minute
+    else:
+        local_datetime = parser.parse(message.text, fuzzy=True)
+        adjusted_datetime = local_datetime + timedelta(seconds=my_timezone_seconds) - timedelta(seconds=user_timezone_seconds)
+        return local_datetime, adjusted_datetime
+
+
+def utc_to_local(user_id: int, with_interval: bool, *, hour: int = None, minute: int = None, timestamp: int = None) -> datetime:
+    load_dotenv()
+    my_timezone_seconds = int(os.getenv("MY_TIMEZONE_AHEAD_SECONDS"))
+    user_timezone_seconds = SettingsManager().get_user_settings(user_id)[1]
+    if with_interval:
+        return datetime(2000, 1, 1, hour, minute, 0) - timedelta(seconds=my_timezone_seconds) + timedelta(seconds=user_timezone_seconds)
+    else:
+        return datetime.fromtimestamp(timestamp) - timedelta(seconds=my_timezone_seconds) + timedelta(seconds=user_timezone_seconds)

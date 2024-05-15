@@ -31,7 +31,7 @@ async def change_timezone(message: types.Message, state: FSMContext) -> None:
     await message.answer(text="Please send me your country or city first so I can identify out your time zone.")
 
 
-@router.message(F.text, Command("start"))
+@router.message(F.text, Command("start", "help"))
 async def start_command_handler(message: types.Message, state: FSMContext) -> None:
     if sm.get_user_settings(message.from_user.id) is None:
         await state.set_state(SettingsForm.location)

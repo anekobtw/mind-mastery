@@ -1,1 +1,2 @@
-from database.bases import NotesManager, ReminderManager, SettingsManager
+from database.bases import (NotesManager, RNIManager, RWIManager,
+                            SettingsManager)

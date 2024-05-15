@@ -33,3 +33,25 @@ def confirm_keyboard(suffix: str) -> types.InlineKeyboardMarkup:
 def website_button(web_app_info: types.WebAppInfo) -> types.InlineKeyboardMarkup:
     buttons = [[types.InlineKeyboardButton(text="Open the website", web_app=web_app_info)]]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
+
+
+def get_reminders_kb() -> types.InlineKeyboardMarkup:
+    buttons = [
+        [
+            types.InlineKeyboardButton(text="With intervals", callback_data="with_intervals"),
+            types.InlineKeyboardButton(text="Without intervals", callback_data="without_intervals"),
+        ]
+    ]
+    return types.InlineKeyboardMarkup(inline_keyboard=buttons)
+
+
+days_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]  # I imported it in reminder_with_intervals
+
+
+def get_week_kb(selected_days: list[str]) -> types.InlineKeyboardMarkup:
+    buttons = [[], [types.InlineKeyboardButton(text="Confirm", callback_data="confirm_week")]]
+
+    for i, day in enumerate(days_of_week):
+        buttons[0].append(types.InlineKeyboardButton(text=f"{day} ✅" if selected_days[i] else day, callback_data=f"week_{day}"))
+
+    return types.InlineKeyboardMarkup(inline_keyboard=buttons)
