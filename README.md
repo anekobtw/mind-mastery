@@ -1,22 +1,18 @@
                          
 <br/>
 <div align="center">
-
-<h3 align="center">Mind Mastery</h3>
+<h1>Mind Mastery</h1>
 
  ![version](https://img.shields.io/badge/Project_version-NA-blue)
  ![aiogram](https://img.shields.io/badge/aiogram-3.x-blue)
  ![licence](https://img.shields.io/badge/License-MIT-green)
  ![made with love](https://img.shields.io/badge/Made_with-Love-red)
  
-<p align="center">
-A telegram bot that will help you study
-</p>
-
+<p>Boost your study sessions with our Telegram bot! Our bot offers a suite of study tools to help you learn smarter, not harder. Whether you're prepping for exams or simply brushing up on a subject, our bot is your study buddy, available 24/7 to support your academic journey.</p>
 </div>
 
  ## About The Project
-When I was preparing for my exams, I couldn't find a good project that can help one to study with some useful tools, so I decided to make it myself.
+When I was preparing for my exams, I couldn't find a good project that can help one to study with some useful tools, so I decided to make it myself. That's it :\
 
 ## Getting started
  ### Prerequisites
