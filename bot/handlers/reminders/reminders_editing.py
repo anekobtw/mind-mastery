@@ -10,7 +10,7 @@ from misc import utc_to_local
 
 
 @router.message(F.text, Command("reminders"))
-async def reminders(message: types.Message) -> None:
+async def reminders(message: types.Message):
     list_of_rwi_reminders = RWIManager().get_user_reminders(message.from_user.id)
     list_of_rni_reminders = RNIManager().get_user_reminders(message.from_user.id)
 

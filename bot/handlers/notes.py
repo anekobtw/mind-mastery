@@ -24,14 +24,14 @@ async def take_note(message: types.Message, state: FSMContext):
 
 
 @router.message(NoteForm.note)
-async def process_note(message: types.Message, state: FSMContext) -> None:
+async def process_note(message: types.Message, state: FSMContext):
     await state.clear()
     nm.create_note(message.from_user.id, message.text)
     await message.answer(text="Note added! ✅\nType /notes to view all notes.")
 
 
 @router.message(F.text, Command("notes"))
-async def notes(message: types.Message) -> None:
+async def notes(message: types.Message):
     notes_list = nm.find_user_notes(message.from_user.id)
     if notes_list:
         await message.answer(

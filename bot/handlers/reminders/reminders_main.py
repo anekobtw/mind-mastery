@@ -6,5 +6,5 @@ from main import router
 
 
 @router.message(F.text, Command("create_reminder"))
-async def create_reminder(message: types.Message) -> None:
+async def create_reminder(message: types.Message):
     await message.answer("Which timer do you want?", reply_markup=get_reminders_kb())

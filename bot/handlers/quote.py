@@ -9,7 +9,7 @@ from main import router
 
 
 @router.message(F.text, Command("quote"))
-async def quote_command(message: types.Message) -> None:
+async def quote_command(message: types.Message):
     # generating til i can find a quite short one
     quote_to_send = quote()
     while len(quote_to_send["quote"]) > 125:
