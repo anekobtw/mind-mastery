@@ -28,14 +28,14 @@ async def cancel_handler(message: types.Message, state: FSMContext) -> None:
 @router.message(F.text, Command("change_timezone"))
 async def change_timezone(message: types.Message, state: FSMContext) -> None:
     await state.set_state(SettingsForm.location)
-    await message.answer(text="Please send me your country or city first so I can identify out your time zone.")
+    await message.answer(text="Please, send me your country or city first so I can identify your time zone.")
 
 
 @router.message(F.text, Command("start", "help"))
 async def start_command_handler(message: types.Message, state: FSMContext) -> None:
     if sm.get_user_settings(message.from_user.id) is None:
         await state.set_state(SettingsForm.location)
-        await message.answer(text="Please send me your country or city first so I can identify out your time zone.")
+        await message.answer(text="Please, send me your country or city first so I can identify your time zone.")
     else:
         await message.answer(start_text)
 
@@ -62,7 +62,7 @@ async def confirmed(callback: types.CallbackQuery):
 @router.callback_query(F.data == "refute_start")
 async def refuted(callback: types.CallbackQuery, state: FSMContext) -> None:
     await state.set_state(SettingsForm.time)
-    await callback.message.edit_text("Please send me your time in the following format: XX:XX.\nType /cancel if you changed your mind.")
+    await callback.message.edit_text("Then send me your time in the following format: XX:XX.")
 
 
 @router.message(SettingsForm.time)
@@ -76,3 +76,18 @@ async def process_time(message: types.Message, state: FSMContext) -> None:
     except Exception:
         await message.answer(f"Something went wrong. Please try again.")
         await state.set_state(SettingsForm.time)
+
+
+@router.message(F.text, Command("links"))
+async def links(message: types.Message) -> None:
+    txt = """
+Developer: @anekobtw
+Developer's channel (news about the bot): @anekobtww
+Source code of the bot: https://github.com/anekobtw/mind-mastery
+"""
+    await message.answer(txt)
+
+
+@router.message(F.text, Command("wiki"))
+async def wiki(message: types.Message) -> None:
+    ...

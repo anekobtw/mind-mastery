@@ -22,7 +22,7 @@ async def quote_command(message: types.Message) -> None:
     text = textwrap.fill(raw_text, width=50)
     font = ImageFont.truetype("AbrilFatface-Regular.ttf", 52.6)
 
-    # trying to make the txt in the middle
+    # trying to make the text in the middle
     _, _, text_width, text_height = draw.textbbox(xy=(0, 250), text=text, font=font)
     text_x = (image.width - text_width) / 2
     text_y = (image.height - text_height) / 2

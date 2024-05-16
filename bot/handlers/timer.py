@@ -8,5 +8,8 @@ web_app_info = types.WebAppInfo(url="https://pomofocus.io/")
 
 
 @router.message(F.text, Command("timer"))
-async def timer(message: types.Message) -> None:
-    await message.answer("I highly recommend you <b>pomofocus</b> website.", reply_markup=website_button(web_app_info))
+async def timer(message: types.Message):
+    await message.answer(
+        "I highly recommend you <b>pomofocus</b> website.",
+        reply_markup=website_button(web_app_info),
+    )

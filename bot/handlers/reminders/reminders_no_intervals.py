@@ -15,7 +15,9 @@ class RNIForm(StatesGroup):
 
 @router.callback_query(F.data == "without_intervals")
 async def without_intervals(callback: types.CallbackQuery, state: FSMContext):
-    await callback.message.answer("Okay, let's create one without intervals. Remember that you can type /cancel at any time if you change your mind.")
+    await callback.message.answer(
+        "Okay, let's create one without intervals. Keep in mind that you can type /cancel at any time if you change your mind."
+    )
     msg = await callback.message.answer("What do you want me to remind you of?")
     await state.update_data(message=msg)
     await state.set_state(RNIForm.purpose)
@@ -33,13 +35,13 @@ async def process_purpose(message: types.Message, state: FSMContext):
 async def process_time(message: types.Message, state: FSMContext):
     user_data = await state.get_data()
     try:
-        txt = f"""
-Check everything and confirm creating by pressing ✅ button below.
+        txt = (
+            "Check everything and confirm creating by pressing ✅ button below.\n\n",
+            f"<b>Purpose:</b> {user_data['purpose']}\n",
+            f"<b>Time:</b> {local_to_utc(message, False)[0].strftime('%d %b %Y %H:%M:%S')}",
+        )
 
-<b>Purpose:</b> {user_data.get("purpose")}
-<b>Time:</b> {local_to_utc(message, False)[0].strftime("%d %b %Y %H:%M:%S")}
-"""
-        await user_data.get("message").edit_text(txt, reply_markup=confirm_keyboard("rni"))
+        await user_data.get("message").edit_text("".join(txt), reply_markup=confirm_keyboard("rni"))
         await state.update_data(utc_timestamp=int(local_to_utc(message, False)[1].timestamp()))
         await state.set_state(None)
     except:
@@ -57,7 +59,7 @@ async def confirmed(callback: types.CallbackQuery, state: FSMContext):
         utc_timestamp=user_data["utc_timestamp"],
     )
     await state.clear()
-    await callback.message.answer(text="Reminder created! ✅\nType /reminders to view all reminders.")
+    await callback.message.answer(text="Reminder created! \nType /reminders to view all reminders.")
 
 
 @router.callback_query(F.data == "refute_rni")

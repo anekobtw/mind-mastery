@@ -1,2 +1,6 @@
-from database.bases import (NotesManager, RNIManager, RWIManager,
-                            SettingsManager)
+from database.bases import (
+    NotesManager,
+    RNIManager,
+    RWIManager,
+    SettingsManager,
+)

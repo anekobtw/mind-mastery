@@ -20,7 +20,11 @@ async def remind_rni(bot: Bot) -> None:
     # without intervals
     for data in RNIManager().get_all_reminders():
         if data[3] <= get_utc_timestamp():
-            await bot.send_message(data[1], text=f"❗ Hey, just reminding you about <b>{data[2]}</b>.", disable_notification=False)
+            await bot.send_message(
+                data[1],
+                text=f"❗ Hey, just reminding you about <b>{data[2]}</b>.",
+                disable_notification=False,
+            )
             RNIManager().delete_reminder(data[0])
 
 
@@ -29,7 +33,11 @@ async def remind_rwi(bot: Bot) -> None:
     for data in RWIManager().get_all_reminders():
         dt = datetime.fromtimestamp(get_utc_timestamp())
         if dt.hour == data[3] and dt.minute == data[4] and datetime.today().weekday() in map(int, data[5].split(",")):
-            await bot.send_message(data[1], text=f"❗ Hey, just reminding you about <b>{data[2]}</b>.", disable_notification=False)
+            await bot.send_message(
+                data[1],
+                text=f"❗ Hey, just reminding you about <b>{data[2]}</b>.",
+                disable_notification=False,
+            )
 
 
 async def run_bot():

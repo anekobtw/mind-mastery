@@ -15,7 +15,9 @@ class RWIForm(StatesGroup):
 
 @router.callback_query(F.data == "with_intervals")
 async def with_intervals(callback: types.CallbackQuery, state: FSMContext):
-    await callback.message.answer("Okay, let's create one with intervals. Remember that you can type /cancel at any time if you change your mind.")
+    await callback.message.answer(
+        "Okay, let's create one with intervals. Remember that you can type /cancel at any time if you change your mind."
+    )
     msg = await callback.message.answer("What do you want me to remind you of?")
     await state.update_data(selected_days=[False, False, False, False, False, False, False])
     await state.update_data(message=msg)
@@ -28,7 +30,8 @@ async def process_purpose(message: types.Message, state: FSMContext):
     if not user_data.get("purpose"):
         await state.update_data(purpose=message.text)
     await user_data["message"].edit_text(
-        "Please, select the days on which I'll remind you, then press confirm", reply_markup=get_week_kb(user_data["selected_days"])
+        "Please, select the days on which I'll remind you, then press confirm",
+        reply_markup=get_week_kb(user_data["selected_days"]),
     )
 
 

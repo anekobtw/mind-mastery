@@ -18,7 +18,7 @@ class NoteForm(StatesGroup):
 
 
 @router.message(F.text, Command("take_note"))
-async def take_note(message: types.Message, state: FSMContext) -> None:
+async def take_note(message: types.Message, state: FSMContext):
     await state.set_state(NoteForm.note)
     await message.answer(text="Write a note. Type /cancel if you change your mind.")
 
@@ -34,8 +34,10 @@ async def process_note(message: types.Message, state: FSMContext) -> None:
 async def notes(message: types.Message) -> None:
     notes_list = nm.find_user_notes(message.from_user.id)
     if notes_list:
-        notes = "\n".join([f"<b>{ind+1}.</b> {note[2]}\n" for ind, note in enumerate(notes_list)])
-        await message.answer(text=notes, reply_markup=list_to_kb(notes_list, "note"))
+        await message.answer(
+            text="\n".join([f"<b>{ind+1}.</b> {note[2]}\n" for ind, note in enumerate(notes_list)]),
+            reply_markup=list_to_kb(notes_list, "note"),
+        )
     else:
         await message.answer("You don't have any notes yet.\nType /take_note to create one.")
 
@@ -43,13 +45,7 @@ async def notes(message: types.Message) -> None:
 @router.callback_query(F.data.startswith("note_info_"))
 async def note_info(callback: types.CallbackQuery):
     note = nm.get_note_info(note_id=callback.data.split("_")[2])
-
-    text = (
-        f"<b>Author's Telegram ID:</b> {note[1]}\n",
-        f"<b>Text:</b> {note[2]}\n",
-    )
-
-    await callback.message.edit_text("".join(text), reply_markup=get_delete_keyboard(note[0], "note"))
+    await callback.message.edit_text(f"<b>Text:</b> {note[2]}\n", reply_markup=get_delete_keyboard(note[0], "note"))
 
 
 @router.callback_query(F.data.startswith("delete_note_"))
@@ -58,7 +54,7 @@ async def delete_note(callback: types.CallbackQuery):
 
     if action != "cancel":
         nm.delete_note(int(action))
-        await callback.message.edit_text(text="Deleted successfully! ✅")
+        await callback.message.edit_text(text="Deleted successfully!")
         time.sleep(0.5)
 
     notes_list = nm.find_user_notes(callback.from_user.id)

@@ -55,7 +55,10 @@ class RNIManager(DBManager):
         super().__init__("databases/reminders.db", table_schema)
 
     def create_reminder(self, user_id: int, purpose: str, utc_timestamp: int) -> None:
-        self.execute_query("INSERT INTO rni(user_id, purpose, utc_timestamp) VALUES (?, ?, ?)", (user_id, purpose, utc_timestamp))
+        self.execute_query(
+            "INSERT INTO rni(user_id, purpose, utc_timestamp) VALUES (?, ?, ?)",
+            (user_id, purpose, utc_timestamp),
+        )
 
     def delete_reminder(self, reminder_id: int) -> None:
         self.execute_query("DELETE FROM rni WHERE reminder_id = ?", (reminder_id,))
@@ -83,7 +86,10 @@ class RWIManager(DBManager):
         super().__init__("databases/reminders.db", table_schema)
 
     def create_reminder(self, user_id: int, purpose: str, hour: int, minute: int, days: str) -> None:
-        self.execute_query("INSERT INTO rwi(user_id, purpose, hour, minute, days) VALUES (?, ?, ?, ?, ?)", (user_id, purpose, hour, minute, days))
+        self.execute_query(
+            "INSERT INTO rwi(user_id, purpose, hour, minute, days) VALUES (?, ?, ?, ?, ?)",
+            (user_id, purpose, hour, minute, days),
+        )
 
     def delete_reminder(self, reminder_id: int) -> None:
         self.execute_query("DELETE FROM rwi WHERE reminder_id = ?", (reminder_id,))
@@ -107,7 +113,10 @@ class SettingsManager(DBManager):
         super().__init__("databases/settings.db", table_schema)
 
     def create_settings(self, user_id: int, tz_offset_secs: int) -> None:
-        self.execute_query("INSERT INTO settings(user_id, tz_offset_secs) VALUES (?, ?)", (user_id, tz_offset_secs))
+        self.execute_query(
+            "INSERT INTO settings(user_id, tz_offset_secs) VALUES (?, ?)",
+            (user_id, tz_offset_secs),
+        )
 
     def delete_settings(self, user_id: int) -> None:
         self.execute_query("DELETE FROM settings WHERE user_id = ?", (user_id,))

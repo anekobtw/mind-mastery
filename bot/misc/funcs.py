@@ -67,19 +67,40 @@ def local_to_utc(message: types.Message, with_interval: bool) -> tuple[int, int]
     user_timezone_seconds = SettingsManager().get_user_settings(message.from_user.id)[1]
     if with_interval:
         hour, minute = map(int, message.text.split(":"))
-        time = datetime(2000, 1, 1, hour, minute, 0) + timedelta(seconds=my_timezone_seconds) - timedelta(seconds=user_timezone_seconds)
+        time = (
+            datetime(2000, 1, 1, hour, minute, 0)
+            + timedelta(seconds=my_timezone_seconds)
+            - timedelta(seconds=user_timezone_seconds)
+        )
         return time.hour, time.minute
     else:
         local_datetime = parser.parse(message.text, fuzzy=True)
-        adjusted_datetime = local_datetime + timedelta(seconds=my_timezone_seconds) - timedelta(seconds=user_timezone_seconds)
+        adjusted_datetime = (
+            local_datetime + timedelta(seconds=my_timezone_seconds) - timedelta(seconds=user_timezone_seconds)
+        )
         return local_datetime, adjusted_datetime
 
 
-def utc_to_local(user_id: int, with_interval: bool, *, hour: int = None, minute: int = None, timestamp: int = None) -> datetime:
+def utc_to_local(
+    user_id: int,
+    with_interval: bool,
+    *,
+    hour: int = None,
+    minute: int = None,
+    timestamp: int = None,
+) -> datetime:
     load_dotenv()
     my_timezone_seconds = int(os.getenv("MY_TIMEZONE_AHEAD_SECONDS"))
     user_timezone_seconds = SettingsManager().get_user_settings(user_id)[1]
     if with_interval:
-        return datetime(2000, 1, 1, hour, minute, 0) - timedelta(seconds=my_timezone_seconds) + timedelta(seconds=user_timezone_seconds)
+        return (
+            datetime(2000, 1, 1, hour, minute, 0)
+            - timedelta(seconds=my_timezone_seconds)
+            + timedelta(seconds=user_timezone_seconds)
+        )
     else:
-        return datetime.fromtimestamp(timestamp) - timedelta(seconds=my_timezone_seconds) + timedelta(seconds=user_timezone_seconds)
+        return (
+            datetime.fromtimestamp(timestamp)
+            - timedelta(seconds=my_timezone_seconds)
+            + timedelta(seconds=user_timezone_seconds)
+        )
