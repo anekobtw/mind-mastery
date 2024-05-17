@@ -79,7 +79,7 @@ async def process_time(message: types.Message, state: FSMContext):
 
 
 @router.message(F.text, Command("links"))
-async def links(message: types.Message) :
+async def links(message: types.Message):
     txt = """
 Developer: @anekobtw
 Developer's channel (news about the bot): @anekobtww

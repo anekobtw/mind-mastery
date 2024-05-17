@@ -34,9 +34,10 @@ def confirm_keyboard(suffix: str) -> types.InlineKeyboardMarkup:
 
 
 def website_button(
+    text: str,
     web_app_info: types.WebAppInfo,
 ) -> types.InlineKeyboardMarkup:
-    buttons = [[types.InlineKeyboardButton(text="Open the website", web_app=web_app_info)]]
+    buttons = [[types.InlineKeyboardButton(text=text, web_app=web_app_info)]]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
@@ -75,4 +76,11 @@ def get_week_kb(selected_days: list[str]) -> types.InlineKeyboardMarkup:
             )
         )
 
+    return types.InlineKeyboardMarkup(inline_keyboard=buttons)
+
+
+def wiki_buttons(search_query: str, length: int) -> types.InlineKeyboardMarkup:
+    buttons = [
+        [types.InlineKeyboardButton(text=f"{i+1}", callback_data=f"wiki_{search_query}_{i+1}") for i in range(length)]
+    ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
