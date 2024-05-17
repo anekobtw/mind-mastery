@@ -4,7 +4,7 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-from keyboards import list_to_kb, website_button, wiki_buttons
+from keyboards import website_button, wiki_buttons
 from main import router
 
 

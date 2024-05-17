@@ -12,6 +12,7 @@ Hey! Welcome to your study buddy. Let's maximize your learning experience with s
 <b>Other</b>
 /timer - Set the timer (customizable pomodoro)
 /quote - Feeling bad? Get an inspiring quote
+/wikipedia - Find a wikipedia article
 
 <b>Settings</b>
 /change_timezone - Change the time zone
