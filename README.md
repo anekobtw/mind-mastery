@@ -38,10 +38,13 @@ First, you need to download Python on your local machine
 - aiogram
 - APScheduler
 - geopy
+- inspirational_quotes
+- Pillow
 - python-dotenv
 - python_dateutil
 - pytz
 - timezonefinder
+- wikipedia
 
 ## Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
