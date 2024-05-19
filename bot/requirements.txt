@@ -1,7 +1,10 @@
 aiogram==3.6.0
 APScheduler==3.10.4
 geopy==2.3.0
+inspirational_quotes==0.0.11
+Pillow==10.3.0
 python-dotenv==1.0.1
 python_dateutil==2.8.2
 pytz==2024.1
 timezonefinder==6.5.0
+wikipedia==1.4.0

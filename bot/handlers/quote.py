@@ -1,8 +1,8 @@
 import textwrap
 
 from aiogram import F, types
-from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command
+from aiogram.fsm.context import FSMContext
 from inspirational_quotes import quote
 from PIL import Image, ImageDraw, ImageFont
 

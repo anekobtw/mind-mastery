@@ -45,6 +45,6 @@ async def wiki_info(callback: types.CallbackQuery):
         page = wikipedia.page(e.options[0])
 
     await callback.message.answer(
-        f"<b>{page.original_title}</b>\n\n{page.summary}",
+        f"<b>{page.original_title}</b>\n\n{page.summary[:1000]}...",
         reply_markup=website_button("Open full article", types.WebAppInfo(url=page.url)),
     )

@@ -1,6 +1,6 @@
 from aiogram import F, types
-from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command
+from aiogram.fsm.context import FSMContext
 
 from keyboards import website_button
 from main import router
