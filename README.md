@@ -2,7 +2,7 @@
 <br/>
 <div align="center">
 
-  <img src='https://github.com/anekobtw/mind-mastery/blob/main/mm%20white.png' height="300" width="300"></img>
+  <img src='https://github.com/anekobtw/mind-mastery/blob/main/mm%20white.png' height="250" width="250"></img>
   <h1>Mind Mastery</h1>
 
  ![version](https://img.shields.io/badge/Project_version-NA-blue)
