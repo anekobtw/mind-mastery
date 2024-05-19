@@ -19,19 +19,21 @@ class NoteForm(StatesGroup):
 
 @router.message(F.text, Command("take_note"))
 async def take_note(message: types.Message, state: FSMContext):
+    await state.clear()
     await state.set_state(NoteForm.note)
-    await message.answer(text="Write a note. Type /cancel if you change your mind.")
+    await message.answer(text="Write a note. Type /cancel at any time if you change your mind.")
 
 
 @router.message(NoteForm.note)
 async def process_note(message: types.Message, state: FSMContext):
     await state.clear()
     nm.create_note(message.from_user.id, message.text)
-    await message.answer(text="Note added! ✅\nType /notes to view all notes.")
+    await message.answer(text="Note added!\nType /notes to view all notes.")
 
 
 @router.message(F.text, Command("notes"))
-async def notes(message: types.Message):
+async def notes(message: types.Message, state: FSMContext):
+    await state.clear()
     notes_list = nm.find_user_notes(message.from_user.id)
     if notes_list:
         await message.answer(

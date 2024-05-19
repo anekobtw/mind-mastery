@@ -1,6 +1,7 @@
 import textwrap
 
 from aiogram import F, types
+from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command
 from inspirational_quotes import quote
 from PIL import Image, ImageDraw, ImageFont
@@ -9,10 +10,11 @@ from main import router
 
 
 @router.message(F.text, Command("quote"))
-async def quote_command(message: types.Message):
+async def quote_command(message: types.Message, state: FSMContext):
+    await state.clear()
     # generating til i can find a quite short one
     quote_to_send = quote()
-    while len(quote_to_send["quote"]) > 125:
+    while len(quote_to_send["quote"]) > 350:
         quote_to_send = quote()
 
     # properties of a pic

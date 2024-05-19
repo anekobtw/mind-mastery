@@ -10,9 +10,11 @@ Hey! Welcome to your study buddy. Let's maximize your learning experience with s
 /reminders - Return a list of your reminders
 
 <b>Other</b>
+/start or /help - Get this message
 /timer - Set the timer (customizable pomodoro)
 /quote - Feeling bad? Get an inspiring quote
 /wikipedia - Find a wikipedia article
+/links - Get links to useful sources
 
 <b>Settings</b>
 /change_timezone - Change the time zone

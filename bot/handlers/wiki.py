@@ -14,8 +14,9 @@ class WikiForm(StatesGroup):
 
 @router.message(F.text, Command("wikipedia"))
 async def wikipedia_command(message: types.Message, state: FSMContext):
+    await state.clear()
     await state.set_state(WikiForm.page)
-    await message.answer("What do you want to search for?")
+    await message.answer("What do you want to search for?\nType /cancel if you don't want to search anymore.")
 
 
 @router.message(WikiForm.page)

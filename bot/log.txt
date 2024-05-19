@@ -1,0 +1,134 @@
+2024-05-19 11:01:37,351 - aiogram.dispatcher - INFO - Start polling
+2024-05-19 11:01:37,657 - aiogram.dispatcher - INFO - Run polling for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:02:10,148 - aiogram.event - INFO - Update id=967055877 is handled. Duration 437 ms by bot id=7147450842
+2024-05-19 11:02:13,274 - aiogram.event - INFO - Update id=967055878 is handled. Duration 156 ms by bot id=7147450842
+2024-05-19 11:02:17,299 - aiogram.event - INFO - Update id=967055879 is handled. Duration 1593 ms by bot id=7147450842
+2024-05-19 11:02:19,493 - aiogram.event - INFO - Update id=967055880 is handled. Duration 140 ms by bot id=7147450842
+2024-05-19 11:02:21,285 - aiogram.event - INFO - Update id=967055881 is handled. Duration 219 ms by bot id=7147450842
+2024-05-19 11:02:29,453 - aiogram.event - INFO - Update id=967055882 is handled. Duration 828 ms by bot id=7147450842
+2024-05-19 11:02:32,036 - aiogram.event - INFO - Update id=967055883 is handled. Duration 360 ms by bot id=7147450842
+2024-05-19 11:02:37,359 - aiogram.event - INFO - Update id=967055884 is handled. Duration 172 ms by bot id=7147450842
+2024-05-19 11:02:41,548 - aiogram.event - INFO - Update id=967055885 is handled. Duration 1593 ms by bot id=7147450842
+2024-05-19 11:02:44,912 - aiogram.event - INFO - Update id=967055886 is handled. Duration 344 ms by bot id=7147450842
+2024-05-19 11:02:46,084 - aiogram.event - INFO - Update id=967055887 is handled. Duration 109 ms by bot id=7147450842
+2024-05-19 11:02:49,013 - aiogram.event - INFO - Update id=967055888 is handled. Duration 172 ms by bot id=7147450842
+2024-05-19 11:02:53,255 - aiogram.event - INFO - Update id=967055889 is handled. Duration 327 ms by bot id=7147450842
+2024-05-19 11:02:54,330 - aiogram.event - INFO - Update id=967055890 is handled. Duration 187 ms by bot id=7147450842
+2024-05-19 11:02:57,572 - aiogram.event - INFO - Update id=967055891 is handled. Duration 125 ms by bot id=7147450842
+2024-05-19 11:03:08,440 - aiogram.event - INFO - Update id=967055892 is handled. Duration 1171 ms by bot id=7147450842
+2024-05-19 11:03:14,170 - aiogram.event - INFO - Update id=967055893 is handled. Duration 1343 ms by bot id=7147450842
+2024-05-19 11:03:55,085 - aiogram.event - INFO - Update id=967055894 is handled. Duration 296 ms by bot id=7147450842
+2024-05-19 11:03:58,965 - aiogram.event - INFO - Update id=967055895 is handled. Duration 171 ms by bot id=7147450842
+2024-05-19 11:04:05,590 - aiogram.event - INFO - Update id=967055896 is handled. Duration 2562 ms by bot id=7147450842
+2024-05-19 11:04:19,582 - aiogram.event - INFO - Update id=967055897 is handled. Duration 3328 ms by bot id=7147450842
+2024-05-19 11:04:24,841 - aiogram.event - INFO - Update id=967055898 is handled. Duration 3265 ms by bot id=7147450842
+2024-05-19 11:04:32,832 - aiogram.event - INFO - Update id=967055899 is handled. Duration 4593 ms by bot id=7147450842
+2024-05-19 11:04:39,841 - aiogram.event - INFO - Update id=967055900 is handled. Duration 4219 ms by bot id=7147450842
+2024-05-19 11:05:24,540 - aiogram.dispatcher - INFO - Polling stopped for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:05:24,540 - aiogram.dispatcher - INFO - Polling stopped
+2024-05-19 11:05:31,862 - aiogram.dispatcher - INFO - Start polling
+2024-05-19 11:05:32,402 - aiogram.dispatcher - INFO - Run polling for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:05:33,175 - aiogram.event - INFO - Update id=967055901 is handled. Duration 655 ms by bot id=7147450842
+2024-05-19 11:05:38,220 - aiogram.event - INFO - Update id=967055902 is handled. Duration 125 ms by bot id=7147450842
+2024-05-19 11:05:40,102 - aiogram.event - INFO - Update id=967055903 is handled. Duration 140 ms by bot id=7147450842
+2024-05-19 11:05:44,068 - aiogram.event - INFO - Update id=967055904 is handled. Duration 812 ms by bot id=7147450842
+2024-05-19 11:07:37,067 - aiogram.dispatcher - INFO - Polling stopped for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:07:37,067 - aiogram.dispatcher - INFO - Polling stopped
+2024-05-19 11:07:44,623 - aiogram.dispatcher - INFO - Start polling
+2024-05-19 11:07:45,036 - aiogram.dispatcher - INFO - Run polling for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:07:47,296 - aiogram.event - INFO - Update id=967055905 is handled. Duration 640 ms by bot id=7147450842
+2024-05-19 11:07:50,483 - aiogram.event - INFO - Update id=967055906 is handled. Duration 141 ms by bot id=7147450842
+2024-05-19 11:07:54,005 - aiogram.event - INFO - Update id=967055907 is handled. Duration 125 ms by bot id=7147450842
+2024-05-19 11:07:56,962 - aiogram.event - INFO - Update id=967055908 is not handled. Duration 0 ms by bot id=7147450842
+2024-05-19 11:08:03,565 - aiogram.event - INFO - Update id=967055909 is handled. Duration 140 ms by bot id=7147450842
+2024-05-19 11:08:05,405 - aiogram.event - INFO - Update id=967055910 is handled. Duration 250 ms by bot id=7147450842
+2024-05-19 11:08:13,117 - aiogram.event - INFO - Update id=967055911 is handled. Duration 125 ms by bot id=7147450842
+2024-05-19 11:08:14,950 - aiogram.event - INFO - Update id=967055912 is not handled. Duration 15 ms by bot id=7147450842
+2024-05-19 11:08:16,300 - aiogram.event - INFO - Update id=967055913 is not handled. Duration 31 ms by bot id=7147450842
+2024-05-19 11:08:17,055 - aiogram.event - INFO - Update id=967055914 is not handled. Duration 0 ms by bot id=7147450842
+2024-05-19 11:09:35,309 - aiogram.event - INFO - Update id=967055915 is handled. Duration 827 ms by bot id=7147450842
+2024-05-19 11:10:16,441 - aiogram.event - INFO - Update id=967055916 is handled. Duration 422 ms by bot id=7147450842
+2024-05-19 11:10:28,589 - aiogram.event - INFO - Update id=967055917 is handled. Duration 265 ms by bot id=7147450842
+2024-05-19 11:10:30,207 - aiogram.event - INFO - Update id=967055918 is handled. Duration 234 ms by bot id=7147450842
+2024-05-19 11:10:31,789 - aiogram.event - INFO - Update id=967055919 is handled. Duration 156 ms by bot id=7147450842
+2024-05-19 11:10:33,364 - aiogram.event - INFO - Update id=967055920 is handled. Duration 125 ms by bot id=7147450842
+2024-05-19 11:10:34,105 - aiogram.event - INFO - Update id=967055921 is handled. Duration 140 ms by bot id=7147450842
+2024-05-19 11:10:35,605 - aiogram.event - INFO - Update id=967055922 is handled. Duration 921 ms by bot id=7147450842
+2024-05-19 11:10:57,219 - aiogram.event - INFO - Update id=967055923 is handled. Duration 2202 ms by bot id=7147450842
+2024-05-19 11:11:02,105 - aiogram.event - INFO - Update id=967055924 is handled. Duration 1530 ms by bot id=7147450842
+2024-05-19 11:11:05,902 - aiogram.event - INFO - Update id=967055925 is handled. Duration 1516 ms by bot id=7147450842
+2024-05-19 11:11:45,750 - aiogram.dispatcher - INFO - Polling stopped for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:11:45,751 - aiogram.dispatcher - INFO - Polling stopped
+2024-05-19 11:11:53,505 - aiogram.dispatcher - INFO - Start polling
+2024-05-19 11:11:53,810 - aiogram.dispatcher - INFO - Run polling for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:11:56,073 - aiogram.event - INFO - Update id=967055926 is handled. Duration 2125 ms by bot id=7147450842
+2024-05-19 11:11:59,301 - aiogram.event - INFO - Update id=967055927 is handled. Duration 1390 ms by bot id=7147450842
+2024-05-19 11:12:02,713 - aiogram.event - INFO - Update id=967055928 is handled. Duration 1452 ms by bot id=7147450842
+2024-05-19 11:12:06,378 - aiogram.event - INFO - Update id=967055929 is handled. Duration 1656 ms by bot id=7147450842
+2024-05-19 11:12:18,531 - aiogram.dispatcher - INFO - Polling stopped for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:12:18,531 - aiogram.dispatcher - INFO - Polling stopped
+2024-05-19 11:12:24,786 - aiogram.dispatcher - INFO - Start polling
+2024-05-19 11:12:25,094 - aiogram.dispatcher - INFO - Run polling for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:12:27,327 - aiogram.event - INFO - Update id=967055930 is handled. Duration 2125 ms by bot id=7147450842
+2024-05-19 11:12:32,248 - aiogram.event - INFO - Update id=967055931 is handled. Duration 1484 ms by bot id=7147450842
+2024-05-19 11:23:02,255 - aiogram.dispatcher - INFO - Polling stopped for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:23:02,256 - aiogram.dispatcher - INFO - Polling stopped
+2024-05-19 11:23:11,091 - aiogram.dispatcher - INFO - Start polling
+2024-05-19 11:23:11,391 - aiogram.dispatcher - INFO - Run polling for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:23:13,354 - aiogram.event - INFO - Update id=967055932 is not handled. Duration 0 ms by bot id=7147450842
+2024-05-19 11:23:13,354 - aiogram.event - ERROR - Cause exception while process update id=967055932 by bot id=7147450842
+ValidationError: 2 validation errors for SendMessage
+link_preview_options.LinkPreviewOptions
+  Input should be a valid dictionary or instance of LinkPreviewOptions [type=model_type, input_value=False, input_type=bool]
+    For further information visit https://errors.pydantic.dev/2.5/v/model_type
+link_preview_options.is-instance[Default]
+  Input should be an instance of Default [type=is_instance_of, input_value=False, input_type=bool]
+    For further information visit https://errors.pydantic.dev/2.5/v/is_instance_of
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 49, in __call__
+    return await handler(event, data)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "E:\Programming\repositories\mind-mastery\bot\handlers\common.py", line 95, in links
+    await message.answer(txt, link_preview_options=False)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 1956, in answer
+    return SendMessage(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\pydantic\main.py", line 164, in __init__
+    __pydantic_self__.__pydantic_validator__.validate_python(data, self_instance=__pydantic_self__)
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for SendMessage
+link_preview_options.LinkPreviewOptions
+  Input should be a valid dictionary or instance of LinkPreviewOptions [type=model_type, input_value=False, input_type=bool]
+    For further information visit https://errors.pydantic.dev/2.5/v/model_type
+link_preview_options.is-instance[Default]
+  Input should be an instance of Default [type=is_instance_of, input_value=False, input_type=bool]
+    For further information visit https://errors.pydantic.dev/2.5/v/is_instance_of
+2024-05-19 11:23:32,394 - aiogram.dispatcher - INFO - Polling stopped for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:23:32,394 - aiogram.dispatcher - INFO - Polling stopped
