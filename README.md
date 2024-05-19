@@ -1,7 +1,9 @@
                          
 <br/>
 <div align="center">
-<h1>Mind Mastery</h1>
+
+  <img src='https://github.com/anekobtw/mind-mastery/blob/main/mm%20white.png' height="300" width="300"></img>
+  <h1>Mind Mastery</h1>
 
  ![version](https://img.shields.io/badge/Project_version-NA-blue)
  ![aiogram](https://img.shields.io/badge/aiogram-3.x-blue)
