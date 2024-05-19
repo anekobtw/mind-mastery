@@ -5,7 +5,7 @@
   <img src='https://github.com/anekobtw/mind-mastery/blob/main/mm%20white.png' height="250" width="250"></img>
   <h1>Mind Mastery</h1>
 
- ![version](https://img.shields.io/badge/Project_version-NA-blue)
+ ![version](https://img.shields.io/badge/Project_version-1.0.0-blue)
  ![aiogram](https://img.shields.io/badge/aiogram-3.x-blue)
  ![licence](https://img.shields.io/badge/License-MIT-green)
  ![made with love](https://img.shields.io/badge/Made_with-Love-red)
