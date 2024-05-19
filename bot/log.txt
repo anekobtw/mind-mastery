@@ -132,3 +132,10 @@ link_preview_options.is-instance[Default]
     For further information visit https://errors.pydantic.dev/2.5/v/is_instance_of
 2024-05-19 11:23:32,394 - aiogram.dispatcher - INFO - Polling stopped for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
 2024-05-19 11:23:32,394 - aiogram.dispatcher - INFO - Polling stopped
+2024-05-19 11:23:40,560 - aiogram.dispatcher - INFO - Start polling
+2024-05-19 11:23:40,892 - aiogram.dispatcher - INFO - Run polling for bot @mind_mastery_bot id=7147450842 - 'Mind Mastery'
+2024-05-19 11:23:41,561 - aiogram.event - INFO - Update id=967055933 is handled. Duration 547 ms by bot id=7147450842
+2024-05-19 11:24:34,741 - aiogram.event - INFO - Update id=967055934 is handled. Duration 281 ms by bot id=7147450842
+2024-05-19 11:24:36,640 - aiogram.event - INFO - Update id=967055935 is handled. Duration 125 ms by bot id=7147450842
+2024-05-19 11:27:04,947 - aiogram.event - INFO - Update id=967055936 is handled. Duration 360 ms by bot id=7147450842
+2024-05-19 11:27:24,200 - aiogram.event - INFO - Update id=967055937 is handled. Duration 311 ms by bot id=7147450842
