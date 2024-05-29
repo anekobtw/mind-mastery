@@ -94,8 +94,6 @@ Developer: @anekobtw
 
 Developer's channel: @anekobtww
 
-Bot news channel: @mind_mastery_news
-
 Source code of the bot: https://github.com/anekobtw/mind-mastery
 """
     await message.answer(txt)

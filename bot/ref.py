@@ -13,6 +13,6 @@ shutil.rmtree("__pycache__")
 
 os.remove("log.txt")
 
-os.system("black . -l 120")
+os.system("black . -l 100")
 os.system("isort .")
 os.system("cls")
