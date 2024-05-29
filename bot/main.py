@@ -6,6 +6,7 @@ from datetime import datetime
 
 from aiogram import Bot, Dispatcher, Router
 from aiogram.client.bot import DefaultBotProperties
+from aiogram.client.session.aiohttp import AiohttpSession
 from aiogram.fsm.storage.memory import MemoryStorage
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from dotenv import load_dotenv
@@ -49,7 +50,8 @@ async def remind_rwi(bot: Bot) -> None:
 async def run_bot():
     load_dotenv()
     TOKEN = os.getenv("TOKEN")
-    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
+    session = AiohttpSession(proxy="http://proxy.server:3128")
+    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"), session=session)
 
     scheduler = AsyncIOScheduler()
     scheduler.add_job(remind_rni, "interval", seconds=1, args=(bot,))
