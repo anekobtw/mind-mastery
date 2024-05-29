@@ -34,7 +34,9 @@ def confirm_keyboard(suffix: str) -> types.InlineKeyboardMarkup:
 
 
 def website_button(text: str, web_app_info: types.WebAppInfo) -> types.InlineKeyboardMarkup:
-    return types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text=text, web_app=web_app_info)]])
+    return types.InlineKeyboardMarkup(
+        inline_keyboard=[[types.InlineKeyboardButton(text=text, web_app=web_app_info)]]
+    )
 
 
 def get_reminders_kb() -> types.InlineKeyboardMarkup:
@@ -47,7 +49,15 @@ def get_reminders_kb() -> types.InlineKeyboardMarkup:
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
-days_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]  # I imported it in reminder_with_intervals
+days_of_week = [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun",
+]  # I imported it in reminder_with_intervals
 
 
 def get_week_kb(selected_days: list[str]) -> types.InlineKeyboardMarkup:
@@ -69,6 +79,9 @@ def get_week_kb(selected_days: list[str]) -> types.InlineKeyboardMarkup:
 
 def wiki_buttons(search_query: str, length: int) -> types.InlineKeyboardMarkup:
     buttons = [
-        [types.InlineKeyboardButton(text=f"{i+1}", callback_data=f"wiki_{search_query}_{i+1}") for i in range(length)]
+        [
+            types.InlineKeyboardButton(text=f"{i+1}", callback_data=f"wiki_{search_query}_{i+1}")
+            for i in range(length)
+        ]
     ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)

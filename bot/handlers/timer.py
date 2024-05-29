@@ -11,5 +11,7 @@ async def timer(message: types.Message, state: FSMContext):
     await state.clear()
     await message.answer(
         "I highly recommend you <b>pomofocus</b> website.",
-        reply_markup=website_button("Open pomofocus", types.WebAppInfo(url="https://pomofocus.io/")),
+        reply_markup=website_button(
+            "Open pomofocus", types.WebAppInfo(url="https://pomofocus.io/")
+        ),
     )

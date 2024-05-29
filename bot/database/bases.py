@@ -85,7 +85,9 @@ class RWIManager(DBManager):
         )"""
         super().__init__("databases/reminders.db", table_schema)
 
-    def create_reminder(self, user_id: int, purpose: str, hour: int, minute: int, days: str) -> None:
+    def create_reminder(
+        self, user_id: int, purpose: str, hour: int, minute: int, days: str
+    ) -> None:
         self.execute_query(
             "INSERT INTO rwi(user_id, purpose, hour, minute, days) VALUES (?, ?, ?, ?, ?)",
             (user_id, purpose, hour, minute, days),

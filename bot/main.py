@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import os
+import time
 from datetime import datetime
 
 from aiogram import Bot, Dispatcher, Router
@@ -14,6 +15,7 @@ from handlers import common
 from misc import get_utc_timestamp
 
 router = Router()
+start_time = time.time()
 
 
 async def remind_rni(bot: Bot) -> None:
@@ -32,7 +34,11 @@ async def remind_rwi(bot: Bot) -> None:
     # with intervals
     for data in RWIManager().get_all_reminders():
         dt = datetime.fromtimestamp(get_utc_timestamp())
-        if dt.hour == data[3] and dt.minute == data[4] and datetime.today().weekday() in map(int, data[5].split(",")):
+        if (
+            dt.hour == data[3]
+            and dt.minute == data[4]
+            and datetime.today().weekday() in map(int, data[5].split(","))
+        ):
             await bot.send_message(
                 data[1],
                 text=f"❗ Hey, just reminding you about <b>{data[2]}</b>.",

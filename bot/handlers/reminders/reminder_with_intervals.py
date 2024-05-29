@@ -51,7 +51,9 @@ async def confirm_week(callback: types.CallbackQuery, state: FSMContext):
     selected_days = user_data["selected_days"]
 
     if any(selected_days):
-        await user_data["message"].edit_text("Please, write the time as HOURS:MINUTES (for example, 13:55)")
+        await user_data["message"].edit_text(
+            "Please, write the time as HOURS:MINUTES (for example, 13:55)"
+        )
         await state.set_state(RWIForm.time)
     else:
         await callback.answer("Error occured. Please, choose at least one day.")
@@ -66,10 +68,18 @@ async def process_time(message: types.Message, state: FSMContext):
             purpose=user_data["purpose"],
             hour=local_to_utc(message, True)[0],
             minute=local_to_utc(message, True)[1],
-            days=",".join([str(ind) for ind, day in enumerate(days_of_week) if user_data["selected_days"][ind]]),
+            days=",".join(
+                [
+                    str(ind)
+                    for ind, day in enumerate(days_of_week)
+                    if user_data["selected_days"][ind]
+                ]
+            ),
         )
         await user_data["message"].edit_text("Created!")
         await state.clear()
     except:
-        await message.answer("Error occured. Please, try again. Write the time as HOURS:MINUTES (for example, 13:55)")
+        await message.answer(
+            "Error occured. Please, try again. Write the time as HOURS:MINUTES (for example, 13:55)"
+        )
         await state.set_state(RWIForm.time)

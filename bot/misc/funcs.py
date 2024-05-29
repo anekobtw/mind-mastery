@@ -52,7 +52,9 @@ def get_utcoffset_from_time(approximate_time: str):
             result[0] = time_zone
             result[1] = abs(local_time_seconds - timezone_time_seconds)
 
-    return pytz.timezone(result[0]), int(pytz.timezone(result[0]).utcoffset(datetime.now()).total_seconds())
+    return pytz.timezone(result[0]), int(
+        pytz.timezone(result[0]).utcoffset(datetime.now()).total_seconds()
+    )
 
 
 def get_utc_timestamp() -> int:
@@ -76,7 +78,9 @@ def local_to_utc(message: types.Message, with_interval: bool) -> tuple[int, int]
     else:
         local_datetime = parser.parse(message.text, fuzzy=True)
         adjusted_datetime = (
-            local_datetime + timedelta(seconds=my_timezone_seconds) - timedelta(seconds=user_timezone_seconds)
+            local_datetime
+            + timedelta(seconds=my_timezone_seconds)
+            - timedelta(seconds=user_timezone_seconds)
         )
         return local_datetime, adjusted_datetime
 

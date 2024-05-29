@@ -29,7 +29,9 @@ async def cancel_handler(message: types.Message, state: FSMContext):
 async def change_timezone(message: types.Message, state: FSMContext):
     await state.clear()
     await state.set_state(SettingsForm.location)
-    await message.answer(text="Please, send me your country or city first so I can identify your time zone.")
+    await message.answer(
+        text="Please, send me your country or city first so I can identify your time zone."
+    )
 
 
 @router.message(F.text, Command("start", "help"))
@@ -37,7 +39,9 @@ async def start_command_handler(message: types.Message, state: FSMContext):
     await state.clear()
     if sm.get_user_settings(message.from_user.id) is None:
         await state.set_state(SettingsForm.location)
-        await message.answer(text="Please, send me your country or city first so I can identify your time zone.")
+        await message.answer(
+            text="Please, send me your country or city first so I can identify your time zone."
+        )
     else:
         await message.answer(start_text)
 
@@ -52,7 +56,9 @@ async def process_location(message: types.Message, state: FSMContext):
         sm.create_settings(message.from_user.id, offset_secs)
         await message.answer(text="".join(text), reply_markup=confirm_keyboard("start"))
     except Exception:
-        await message.answer("Something went wrong. Send me your time in the following format: XX:XX.")
+        await message.answer(
+            "Something went wrong. Send me your time in the following format: XX:XX."
+        )
         await state.set_state(SettingsForm.time)
 
 
