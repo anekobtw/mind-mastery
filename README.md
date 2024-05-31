@@ -12,7 +12,6 @@
  
 Boost your study sessions with our Telegram bot! Our bot offers a suite of study tools to help you learn smarter, not harder. Whether you're prepping for exams or simply brushing up on a subject, our bot is your study buddy, available 24/7 to support your academic journey.
 
-Try it out: [@mind_mastery_bot](https://t.me/mind_mastery_bot)
 </div>
 
  ## About The Project
