@@ -1,56 +1,61 @@
-                         
-<br/>
-<div align="center">
 
-  <img src='https://github.com/anekobtw/mind-mastery/blob/main/mm%20white.png' height="250" width="250"></img>
-  <h1>Mind Mastery</h1>
-
- ![version](https://img.shields.io/badge/Project_version-1.0.0-blue)
- ![aiogram](https://img.shields.io/badge/aiogram-3.x-blue)
- ![licence](https://img.shields.io/badge/License-MIT-green)
- ![made with love](https://img.shields.io/badge/Made_with-Love-red)
+# Mind Mastery
+![version](https://img.shields.io/badge/Project_version-1.0.0-blue)
+![aiogram](https://img.shields.io/badge/aiogram-3.x-blue)
+![licence](https://img.shields.io/badge/License-MIT-green)
+![made with love](https://img.shields.io/badge/Made_with-Love-red)
  
 Boost your study sessions with our Telegram bot! Our bot offers a suite of study tools to help you learn smarter, not harder. Whether you're prepping for exams or simply brushing up on a subject, our bot is your study buddy, available 24/7 to support your academic journey.
+## Environment Variables
+To run this project, you will need to add the following environment variables to your .env file
 
-</div>
+`TOKEN` - Your bot token
 
- ## About The Project
-When I was preparing for my exams, I couldn't find a good project that can help one to study with some useful tools, so I decided to make it myself. That's it :\
+`MY_TIMEZONE_AHEAD_SECONDS` - The difference between your timezone and UTC (e.g. 14400, -3600, etc.)
+## Run Locally
+Clone the project
 
-## Getting started
- ### Prerequisites
-First, you need to download Python on your local machine
- 
- ### Installation
-1. Clone the repo
-   ```
-   git clone https://github.com/anekobtw/mind-mastery.git
-   ```
-2. Install dependencies
-   ```
-   pip install -r requirements.txt
-   ```
-3. Create an .env file in `/bot` folder and then insert it there (and insert your data)
-  ```
-  TOKEN = 
-  MY_TIMEZONE_AHEAD_SECONDS = 
-  ```
-4. Run `main.py` file
+```
+$ git clone https://github.com/anekobtw/mind-mastery
+```
 
+Go to the project directory
+
+```
+$ cd bot
+```
+
+Install dependencies
+
+```bash
+$ pip install -r requirements.txt
+```
+
+Run the program
+
+```bash
+$ python main.py
+```
+## About the project
+### Authors
+
+- [@anekobtw](https://www.github.com/anekobtw) 
  ### Built With
-- aiogram
-- APScheduler
-- geopy
-- inspirational_quotes
-- Pillow
-- python-dotenv
-- python_dateutil
+- [aiogram](https://github.com/aiogram/aiogram) - A modern and fully asynchronous framework for Telegram Bot API written in Python using asyncio 
+- [APScheduler](https://github.com/agronholm/apscheduler) - Task scheduling library for Python 
+- [geopy](https://github.com/geopy/geopy) - Geocoding library for Python. 
+- [inspirational_quotes](https://github.com/saip007/inspirational_quotes) -  Simple Pypi Package which returns random Inspirational Quotes.
+- [Pillow](https://github.com/python-pillow/Pillow) -  Python Imaging Library
+- [python-dotenv](https://github.com/theskumar/python-dotenv) - Reads key-value pairs from a .env file and can set them as environment variables.
+- [python_dateutil](https://github.com/dateutil/dateutil) - Useful extensions to the standard Python datetime features 
 - pytz
-- timezonefinder
+- [timezonefinder](https://github.com/jannikmi/timezonefinder) - Python package for finding the timezone of any point on earth (coordinates) offline
 - wikipedia
-
 ## Contributing
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are always welcome!
 
- ## License
-Distributed under the MIT License. See [MIT License](https://opensource.org/licenses/MIT) for more information.
+See `contributing.md` for ways to get started.
+
+Please adhere to this project's `code of conduct`.
+## License
+The project is [MIT](https://choosealicense.com/licenses/mit/) licensed
