@@ -1,15 +1,15 @@
 import time
 
-from aiogram import F, types
+from aiogram import F, Router, types
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
 from database import NotesManager
 from keyboards import get_delete_keyboard, list_to_kb
-from main import router
 
 nm = NotesManager()
+router = Router()
 
 
 class NoteForm(StatesGroup):
@@ -47,9 +47,7 @@ async def notes(message: types.Message, state: FSMContext):
 @router.callback_query(F.data.startswith("note_info_"))
 async def note_info(callback: types.CallbackQuery):
     note = nm.get_note_info(note_id=callback.data.split("_")[2])
-    await callback.message.edit_text(
-        f"<b>Text:</b> {note[2]}\n", reply_markup=get_delete_keyboard(note[0], "note")
-    )
+    await callback.message.edit_text(f"<b>Text:</b> {note[2]}\n", reply_markup=get_delete_keyboard(note[0], "note"))
 
 
 @router.callback_query(F.data.startswith("delete_note_"))
@@ -66,6 +64,4 @@ async def delete_note(callback: types.CallbackQuery):
     if notes:
         await callback.message.edit_text(text=notes, reply_markup=list_to_kb(notes_list, "note"))
     else:
-        await callback.message.edit_text(
-            text="You don't have any notes yet.\nType /take_note to create one."
-        )
+        await callback.message.edit_text(text="You don't have any notes yet.\nType /take_note to create one.")

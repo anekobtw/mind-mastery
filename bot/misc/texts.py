@@ -18,3 +18,9 @@ Hey! Welcome to your study buddy. Let's maximize your learning experience with s
 
 © anekobtw, 2024
 """
+
+links_text = """
+Developer: @anekobtw
+
+Source code of the bot: https://github.com/anekobtw/mind-mastery
+"""

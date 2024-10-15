@@ -1,15 +1,10 @@
-from aiogram import F, types
+from aiogram import F, Router, types
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import State, StatesGroup
 
-from main import router
-from misc import start_text
+from misc.texts import links_text, start_text
 
-
-class SettingsForm(StatesGroup):
-    location = State()
-    time = State()
+router = Router()
 
 
 @router.message(F.text, Command("cancel"))
@@ -23,17 +18,11 @@ async def cancel_handler(message: types.Message, state: FSMContext):
 
 @router.message(F.text, Command("start", "help"))
 async def start_command_handler(message: types.Message, state: FSMContext):
+    await state.clear()
     await message.answer(start_text)
 
 
 @router.message(F.text, Command("links"))
 async def links(message: types.Message, state: FSMContext):
     await state.clear()
-    txt = """
-Developer: @anekobtw
-
-Developer's channel: @anekobtww
-
-Source code of the bot: https://github.com/anekobtw/mind-mastery
-"""
-    await message.answer(txt)
+    await message.answer(links_text, link_preview_options=types.LinkPreviewOptions(is_disabled=True))

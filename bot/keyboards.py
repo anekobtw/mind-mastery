@@ -23,20 +23,8 @@ def get_delete_keyboard(id: int, prefix: str) -> types.InlineKeyboardMarkup:
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
-def confirm_keyboard(suffix: str) -> types.InlineKeyboardMarkup:
-    buttons = [
-        [
-            types.InlineKeyboardButton(text="✅", callback_data=f"confirm_{suffix}"),
-            types.InlineKeyboardButton(text="❌", callback_data=f"refute_{suffix}"),
-        ]
-    ]
-    return types.InlineKeyboardMarkup(inline_keyboard=buttons)
-
-
 def website_button(text: str, web_app_info: types.WebAppInfo) -> types.InlineKeyboardMarkup:
-    return types.InlineKeyboardMarkup(
-        inline_keyboard=[[types.InlineKeyboardButton(text=text, web_app=web_app_info)]]
-    )
+    return types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text=text, web_app=web_app_info)]])
 
 
 def get_reminders_kb() -> types.InlineKeyboardMarkup:
@@ -49,39 +37,6 @@ def get_reminders_kb() -> types.InlineKeyboardMarkup:
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
-days_of_week = [
-    "Mon",
-    "Tue",
-    "Wed",
-    "Thu",
-    "Fri",
-    "Sat",
-    "Sun",
-]  # I imported it in reminder_with_intervals
-
-
-def get_week_kb(selected_days: list[str]) -> types.InlineKeyboardMarkup:
-    buttons = [
-        [],
-        [types.InlineKeyboardButton(text="Confirm", callback_data="confirm_week")],
-    ]
-
-    for i, day in enumerate(days_of_week):
-        buttons[0].append(
-            types.InlineKeyboardButton(
-                text=f"{day} ✅" if selected_days[i] else day,
-                callback_data=f"week_{day}",
-            )
-        )
-
-    return types.InlineKeyboardMarkup(inline_keyboard=buttons)
-
-
 def wiki_buttons(search_query: str, length: int) -> types.InlineKeyboardMarkup:
-    buttons = [
-        [
-            types.InlineKeyboardButton(text=f"{i+1}", callback_data=f"wiki_{search_query}_{i+1}")
-            for i in range(length)
-        ]
-    ]
+    buttons = [[types.InlineKeyboardButton(text=f"{i+1}", callback_data=f"wiki_{search_query}_{i+1}") for i in range(length)]]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
