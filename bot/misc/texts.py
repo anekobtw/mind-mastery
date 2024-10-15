@@ -12,9 +12,6 @@ Hey! Welcome to your study buddy. Let's maximize your learning experience with s
 /wikipedia - Find a wikipedia article
 /links - Get links to useful sources
 
-<b>Settings</b>
-/change_timezone - Change the time zone
-
 
 © anekobtw, 2024
 """

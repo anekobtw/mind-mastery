@@ -23,20 +23,20 @@ def get_delete_keyboard(id: int, prefix: str) -> types.InlineKeyboardMarkup:
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
-def website_button(text: str, web_app_info: types.WebAppInfo) -> types.InlineKeyboardMarkup:
-    return types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text=text, web_app=web_app_info)]])
-
-
-def get_reminders_kb() -> types.InlineKeyboardMarkup:
-    buttons = [
-        [
-            types.InlineKeyboardButton(text="With intervals", callback_data="with_intervals"),
-            types.InlineKeyboardButton(text="Without intervals", callback_data="without_intervals"),
-        ]
-    ]
+def wiki_buttons(results: list[str]) -> types.InlineKeyboardMarkup:
+    buttons = [[types.InlineKeyboardButton(text=f"{result}", callback_data=f"wiki_{result}")] for result in results]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
-def wiki_buttons(search_query: str, length: int) -> types.InlineKeyboardMarkup:
-    buttons = [[types.InlineKeyboardButton(text=f"{i+1}", callback_data=f"wiki_{search_query}_{i+1}") for i in range(length)]]
+def quotes_keyboard() -> types.InlineKeyboardMarkup:
+    buttons = [
+        [types.InlineKeyboardButton(text="Motivational", callback_data="quote_motivational")],
+        [types.InlineKeyboardButton(text="Friendship", callback_data="quote_friendship")],
+        [types.InlineKeyboardButton(text="Technology", callback_data="quote_technology")],
+        [types.InlineKeyboardButton(text="Inspirational", callback_data="quote_inspirational")],
+        [types.InlineKeyboardButton(text="Funny", callback_data="quote_funny")],
+        [types.InlineKeyboardButton(text="Nature", callback_data="quote_nature")],
+        [types.InlineKeyboardButton(text="Attitude", callback_data="quote_attitude")],
+        [types.InlineKeyboardButton(text="Coding", callback_data="quote_coding")],
+    ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)

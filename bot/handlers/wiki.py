@@ -4,7 +4,7 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-from keyboards import website_button, wiki_buttons
+from keyboards import wiki_buttons
 
 router = Router()
 
@@ -24,21 +24,31 @@ async def wikipedia_command(message: types.Message, state: FSMContext):
 async def process_page(message: types.Message, state: FSMContext):
     results = wikipedia.search(message.text, results=5)
     if results:
-        await message.answer(text="<b>Choose an article</b>\n\n" + "\n".join([f"<b>{ind+1}.</b> {result}\n" for ind, result in enumerate(results)]), reply_markup=wiki_buttons(message.text, 5))
+        await message.answer(text="<b>Choose an article</b>", reply_markup=wiki_buttons(results))
     else:
         await message.answer("No results found.")
-
     await state.clear()
 
 
 @router.callback_query(F.data.startswith("wiki_"))
 async def wiki_info(callback: types.CallbackQuery):
-    _, query, ind = callback.data.split("_")
-    results = wikipedia.search(query, results=5)
+    _, query = callback.data.split("_")
 
     try:
-        page = wikipedia.page(results[int(ind) - 1], auto_suggest=False)
+        page = wikipedia.page(query, auto_suggest=False)
     except wikipedia.DisambiguationError as e:
         page = wikipedia.page(e.options[0])
 
-    await callback.message.answer(f"<b>{page.original_title}</b>\n\n{page.summary[:1000]}...", reply_markup=website_button("Open full article", types.WebAppInfo(url=page.url)))
+    await callback.message.answer(f"<b>{page.original_title}</b>\n\n{page.summary[:1000]}...", reply_markup=types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text="Open full article", callback_data=f"wikifull_{query}")]]))
+
+
+@router.callback_query(F.data.startswith("wikifull_"))
+async def read_full(callback: types.CallbackQuery):
+    _, query = callback.data.split("_")
+
+    page = wikipedia.page(query, auto_suggest=False)
+    print(page)
+    print(page.sections)
+    for section in page.sections:
+        print(section)
+        await callback.message.answer(f"<b>{section}</b>\n{page.section(section)[:1900]}")
