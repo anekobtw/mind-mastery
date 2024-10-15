@@ -5,10 +5,6 @@ Hey! Welcome to your study buddy. Let's maximize your learning experience with s
 /take_note - Create a new note
 /notes - Return a list of your notes 
 
-<b>Reminders</b>
-/create_reminder - Create a new reminder
-/reminders - Return a list of your reminders
-
 <b>Other</b>
 /start or /help - Get this message
 /timer - Set the timer (customizable pomodoro)

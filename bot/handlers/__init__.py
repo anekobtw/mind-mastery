@@ -1,1 +1,1 @@
-from handlers import common, notes, quote, reminders, status, timer, wiki
+from handlers import common, notes, quote, status, timer, wiki

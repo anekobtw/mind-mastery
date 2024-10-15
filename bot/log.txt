@@ -1,0 +1,8 @@
+2024-10-15 17:11:05,098 - aiogram.dispatcher - INFO - Start polling
+2024-10-15 17:11:05,426 - aiogram.dispatcher - INFO - Polling stopped
+2024-10-15 17:11:45,495 - aiogram.dispatcher - INFO - Start polling
+2024-10-15 17:11:45,802 - aiogram.dispatcher - INFO - Run polling for bot @asd123123123_bot id=6946531325 - 'test'
+2024-10-15 17:11:55,581 - aiogram.event - INFO - Update id=791724454 is handled. Duration 422 ms by bot id=6946531325
+2024-10-15 17:11:57,919 - aiogram.event - INFO - Update id=791724455 is handled. Duration 109 ms by bot id=6946531325
+2024-10-15 17:12:13,126 - aiogram.dispatcher - INFO - Polling stopped for bot @asd123123123_bot id=6946531325 - 'test'
+2024-10-15 17:12:13,126 - aiogram.dispatcher - INFO - Polling stopped
