@@ -32,6 +32,17 @@ async def dog(message: types.Message, state: FSMContext):
         await message.answer_photo(photo=types.URLInputFile(result.json()["image"]))
 
 
+@router.message(F.text, Command("joke"))
+async def dadjoke(message: types.Message, state: FSMContext):
+    await state.clear()
+
+    result = requests.get("https://official-joke-api.appspot.com/random_joke")
+    setup = result.json().get("setup")
+    punchline = result.json().get("punchline")
+    if result.status_code == 200:
+        await message.answer(f"{setup}\n<span class='tg-spoiler'>{punchline}</span>")
+
+
 @router.message(F.text, Command("chart"))
 async def chart(message: types.Message, state: FSMContext):
     await state.clear()
