@@ -40,3 +40,13 @@ def quotes_keyboard() -> types.InlineKeyboardMarkup:
         [types.InlineKeyboardButton(text="Coding", callback_data="quote_coding")],
     ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
+
+
+def charts_keyboard() -> types.InlineKeyboardMarkup:
+    buttons = [
+        [types.InlineKeyboardButton(text="Bar chart", callback_data="chart_bar")],
+        [types.InlineKeyboardButton(text="Line graph", callback_data="chart_line")],
+        [types.InlineKeyboardButton(text="Pie chart", callback_data="chart_pie")],
+        [types.InlineKeyboardButton(text="Doughnut chart", callback_data="chart_doughnut")],
+    ]
+    return types.InlineKeyboardMarkup(inline_keyboard=buttons)

@@ -1,5 +1,5 @@
 aiogram==3.13.1
-inspirational_quotes==0.0.14
-Pillow==10.4.0
+Pillow==11.0.0
+pyquotegen==0.0.4
 python-dotenv==1.0.1
-wikipedia==1.4.0
+wikipedia_sections==2.0.0

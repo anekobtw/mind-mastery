@@ -22,7 +22,7 @@ async def wikipedia_command(message: types.Message, state: FSMContext):
 
 @router.message(WikiForm.page)
 async def process_page(message: types.Message, state: FSMContext):
-    results = wikipedia.search(message.text, results=5)
+    results = wikipedia.search(message.text, results=10)
     if results:
         await message.answer(text="<b>Choose an article</b>", reply_markup=wiki_buttons(results))
     else:
@@ -34,12 +34,8 @@ async def process_page(message: types.Message, state: FSMContext):
 async def wiki_info(callback: types.CallbackQuery):
     _, query = callback.data.split("_")
 
-    try:
-        page = wikipedia.page(query, auto_suggest=False)
-    except wikipedia.DisambiguationError as e:
-        page = wikipedia.page(e.options[0])
-
-    await callback.message.answer(f"<b>{page.original_title}</b>\n\n{page.summary[:1000]}...", reply_markup=types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text="Open full article", callback_data=f"wikifull_{query}")]]))
+    page = wikipedia.page(query, auto_suggest=False)
+    await callback.message.edit_text(text=f"<b>{page.original_title}</b>\n\n{page.summary[:1000]}...", reply_markup=types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text="Read full article", callback_data=f"wikifull_{query}")]]))
 
 
 @router.callback_query(F.data.startswith("wikifull_"))
@@ -47,8 +43,6 @@ async def read_full(callback: types.CallbackQuery):
     _, query = callback.data.split("_")
 
     page = wikipedia.page(query, auto_suggest=False)
-    print(page)
-    print(page.sections)
     for section in page.sections:
-        print(section)
-        await callback.message.answer(f"<b>{section}</b>\n{page.section(section)[:1900]}")
+        if page.section(section):
+            await callback.message.answer(f"<b>{section}</b>\n{page.section(section)[:1900]}")

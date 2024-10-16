@@ -16,7 +16,7 @@ async def cancel_handler(message: types.Message, state: FSMContext):
     await message.answer(text="Canceled.", reply_markup=types.ReplyKeyboardRemove())
 
 
-@router.message(F.text, Command("start", "help"))
+@router.message(F.text, Command("start"))
 async def start_command_handler(message: types.Message, state: FSMContext):
     await state.clear()
     await message.answer(start_text)
