@@ -16,30 +16,36 @@ class ChartForm(StatesGroup):
     items = State()
 
 
+@router.message(F.text, Command("cat"))
+async def cat(message: types.Message, state: FSMContext):
+    await state.clear()
+    await message.answer_photo(photo=types.URLInputFile("https://cataas.com/cat"))
+
+
 @router.message(F.text, Command("dog"))
 async def dog(message: types.Message, state: FSMContext):
     await state.clear()
-    result = requests.get("https://dog.ceo/api/breeds/image/random")
-    if result.status_code == 200:
-        await message.answer_photo(photo=types.URLInputFile(result.json()["message"]))
+    response = requests.get("https://dog.ceo/api/breeds/image/random")
+    if response.status_code == 200:
+        await message.answer_photo(photo=types.URLInputFile(response.json()["message"]))
 
 
 @router.message(F.text, Command("fox"))
-async def dog(message: types.Message, state: FSMContext):
+async def fox(message: types.Message, state: FSMContext):
     await state.clear()
-    result = requests.get("https://randomfox.ca/floof/")
-    if result.status_code == 200:
-        await message.answer_photo(photo=types.URLInputFile(result.json()["image"]))
+    response = requests.get("https://randomfox.ca/floof/")
+    if response.status_code == 200:
+        await message.answer_photo(photo=types.URLInputFile(response.json()["image"]))
 
 
 @router.message(F.text, Command("joke"))
-async def dadjoke(message: types.Message, state: FSMContext):
+async def joke(message: types.Message, state: FSMContext):
     await state.clear()
 
-    result = requests.get("https://official-joke-api.appspot.com/random_joke")
-    setup = result.json().get("setup")
-    punchline = result.json().get("punchline")
-    if result.status_code == 200:
+    response = requests.get("https://official-joke-api.appspot.com/random_joke")
+    setup = response.json().get("setup")
+    punchline = response.json().get("punchline")
+    if response.status_code == 200:
         await message.answer(f"{setup}\n<span class='tg-spoiler'>{punchline}</span>")
 
 

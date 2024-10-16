@@ -5,11 +5,18 @@ Hey! Welcome to your study buddy. Let's maximize your learning experience with s
 /take_note - Create a new note
 /notes - Return a list of your notes 
 
+<b>Random</b>
+/cat - A random cat photo.
+/dog - A random dog photo.
+/fox - A random fox photo.
+/quote - A random quote.
+/affirmation - A random affirmation.
+
 <b>Other</b>
-/start - Get this message
-/quote - Feeling bad? Get an inspiring quote
-/wikipedia - Find a wikipedia article
-/links - Get links to useful sources
+/start - Get this message.
+/wikipedia - Find a wikipedia article.
+/chart - Generate a beautiful chart.
+/links - Get links to useful sources.
 
 
 © anekobtw, 2024
